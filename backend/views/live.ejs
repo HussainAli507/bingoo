@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Live Event: <%= event.title %></title>
+  </head>
+  <body>
+    <h1>Live Event: <%= event.title %></h1>
+    <p>Date: <%= event.date %></p>
+    <p>Participants:</p>
+    <ul>
+      <% event.participants.forEach(participant => { %>
+      <li><%= participant.name %></li>
+      <% }) %>
+    </ul>
+    <!-- Add video streaming and interactive features here -->
+  </body>
+</html>

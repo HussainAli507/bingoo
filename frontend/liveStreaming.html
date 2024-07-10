@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Live Streaming</title>
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+        crossorigin="anonymous"
+    />
+    <link
+        rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="./static/css/styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="icon" href="./static/images/logos/GOS_500x500.png" />
+    <style>
+        .crossed-out {
+            text-decoration: line-through;
+            color: red;
+        }
+        .red-background {
+            background-color: rgba(255, 0, 0, 0.3);
+        }
+        .bold {
+            font-weight: bold;
+            font-size: x-large;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img src="./static/images/logos/GOS_500x500.png" class="nav-logo" />
+        </a>
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarTogglerDemo02"
+            aria-controls="navbarTogglerDemo02"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+        >
+            <style>
+                .carousel-control-prev-icon,
+                .carousel-control-next-icon {
+                    background-color: black; 
+                }
+            </style>
+            <style>
+                #popup-background {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 999;
+}
+
+#popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    text-align: center;
+    z-index: 1000;
+}
+
+#popup h2 {
+    margin-bottom: 20px;
+    color: #28a745;
+    font-size: 2rem;
+    animation: cheer 1s infinite;
+}
+
+#popup button {
+    margin-top: 10px;
+    width: 100px;
+}
+
+.btn-primary {
+    background-color: #276d20;
+    border: none;
+}
+
+.btn-secondary {
+    background-color: #a02323;
+    border: none;
+}
+
+@keyframes cheer {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+            </style>
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav ms-auto ms-5 mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="./index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="bingo.html">Bingo</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="events.html">Events</a>
+                </li>
+                <li class="nav-item">
+                    <a
+                        class="nav-link"
+                        style="color: #84c69b"
+                        href="liveStreaming.html"
+                    >LiveStream</a
+                    >
+                </li>
+            </ul>
+            <div class="d-flex">
+                <a
+                    href="./login.html"
+                    class="btn btn-outline-success me-2 login-btn"
+                    type="button"
+                >Login</a
+                >
+                <a
+                    href="./join.html"
+                    class="btn btn-success me-2 join-btn"
+                    type="button"
+                >Join</a
+                >
+            </div>
+        </div>
+    </div>
+</nav>
+
+<hr class="nav-hr" />
+
+<section id="liveStreaming-section">
+    <div class="container-fluid liveStreaming-cont">
+        <h1 class="liveStreaming-h1">BOUNCE BINGO</h1>
+        <div class="detail-div">
+            <span class="liveStreaming-h6">BINGO SESSION #</span>
+            <span class="liveStreaming-h6">BINGO GAME #</span>
+            <span class="liveStreaming-h6">GAME PRIZE#</span>
+            <span class="liveStreaming-h6">POINT BALANCE #</span>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-6 col-12">
+                <h1 class="liveStreaming-h1">Event Details</h1>
+                <video id="mainVideo" controls>
+                    <source
+                        src="./static/images/video.85deef379e2ef61c6802.mp4"
+                        type="video/mp4"
+                    />
+                </video>
+                <button class="upload-btn btn mobile">BINGO</button>
+                <button class="upload-btn btn mobile">BUY MORE CARDS</button>
+                <div
+                    id="carouselExampleControls2"
+                    style="background: none"
+                    class="carousel slide mt-5 desktop"
+                    data-bs-ride="carousel"
+                >
+                    <div class="carousel-inner" id="carouselInner"></div>
+                    <button
+                        class="carousel-control-prev"
+                        type="button"
+                        data-bs-target="#carouselExampleControls2"
+                        data-bs-slide="prev"
+                    >
+                        <div style="display: inline-block; margin-right: 170px">
+                <span
+                    class="carousel-control-prev-icon"
+                    aria-hidden="true"
+                    style="
+                    background-image: url('data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'%23000\' viewBox=\'0 0 16 16\'%3E%3Cpath d=\'M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z\'/%3E%3C/svg%3E');
+                    display: inline-block;
+                    width: 2rem;
+                    height: 2rem;
+                    background-size: contain;
+                    transform: rotate(180deg);
+                    background-color: transparent; /* Ensure no background color */
+                  "
+                ></span>
+                        </div>
+                    </button>
+
+
+                    <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button
+                        class="carousel-control-next"
+                        type="button"
+                        data-bs-target="#carouselExampleControls2"
+                        data-bs-slide="next"
+                    >
+              <span
+                  class="carousel-control-next-icon"
+                  aria-hidden="true"
+                  style="
+                  background-image: url('data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'%23000\' viewBox=\'0 0 16 16\'%3E%3Cpath d=\'M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z\'/%3E%3C/svg%3E');
+                  display: inline-block;
+                  width: 2rem;
+                  height: 2rem;
+                  background-size: contain;
+                  background-color: transparent;
+                "
+              ></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+
+                </div>
+            </div>
+
+            <style>
+                .bingo-table th, .bingo-table td {
+                    font-weight: bolder;
+                    font-size: 180px;
+                    text-align: center;
+                    padding: 20px;
+                }
+
+                .bold {
+                    font-weight: bolder;
+                }
+            </style>
+
+            <div class="col-sm-12 col-md-6 col-lg-6 col-12">
+                <div class="row">
+                    <div class="col-sm-6 col-md-6 col-lg-6 col-6 table-col">
+                        <table class="bingo-table">
+                            <tr>
+                                <th class="bold">B</th>
+                                <th class="bold">I</th>
+                                <th class="bold">N</th>
+                                <th class="bold">G</th>
+                                <th class="bold">O</th>
+                            </tr>
+                            <tr>
+                                <td id="square1">1</td>
+                                <td id="square16">16</td>
+                                <td id="square31">31</td>
+                                <td id="square46">46</td>
+                                <td id="square61">61</td>
+                            </tr>
+                            <tr>
+                                <td id="square2">2</td>
+                                <td id="square17">17</td>
+                                <td id="square32">32</td>
+                                <td id="square47">47</td>
+                                <td id="square62">62</td>
+                            </tr>
+                            <tr>
+                                <td id="square3">3</td>
+                                <td id="square18">18</td>
+                                <td id="square33">33</td>
+                                <td id="square48">48</td>
+                                <td id="square63">63</td>
+                            </tr>
+                            <tr>
+                                <td id="square4">4</td>
+                                <td id="square19">19</td>
+                                <td id="square34">34</td>
+                                <td id="square49">49</td>
+                                <td id="square64">64</td>
+                            </tr>
+                            <tr>
+                                <td id="square5">5</td>
+                                <td id="square20">20</td>
+                                <td id="square35">35</td>
+                                <td id="square50">50</td>
+                                <td id="square65">65</td>
+                            </tr>
+                            <tr>
+                                <td id="square6">6</td>
+                                <td id="square21">21</td>
+                                <td id="square36">36</td>
+                                <td id="square51">51</td>
+                                <td id="square66">66</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col-sm-6 col-md-6 col-lg-6 col-6 table-col">
+                        <table class="bingo-table">
+                            <tr>
+                                <th class="bold">B</th>
+                                <th class="bold">I</th>
+                                <th class="bold">N</th>
+                                <th class="bold">G</th>
+                                <th class="bold">O</th>
+                            </tr>
+                            <tr>
+                                <td id="square1">1</td>
+                                <td id="square16">16</td>
+                                <td id="square31">31</td>
+                                <td id="square46">46</td>
+                                <td id="square61">61</td>
+                            </tr>
+                            <tr>
+                                <td id="square2">2</td>
+                                <td id="square17">17</td>
+                                <td id="square32">32</td>
+                                <td id="square47">47</td>
+                                <td id="square62">62</td>
+                            </tr>
+                            <tr>
+                                <td id="square3">3</td>
+                                <td id="square18">18</td>
+                                <td id="square33">33</td>
+                                <td id="square48">48</td>
+                                <td id="square63">63</td>
+                            </tr>
+                            <tr>
+                                <td id="square4">4</td>
+                                <td id="square19">19</td>
+                                <td id="square34">34</td>
+                                <td id="square49">49</td>
+                                <td id="square64">64</td>
+                            </tr>
+                            <tr>
+                                <td id="square5">5</td>
+                                <td id="square20">20</td>
+                                <td id="square35">35</td>
+                                <td id="square50">50</td>
+                                <td id="square65">65</td>
+                            </tr>
+                            <tr>
+                                <td id="square6">6</td>
+                                <td id="square21">21</td>
+                                <td id="square36">36</td>
+                                <td id="square51">51</td>
+                                <td id="square66">66</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 col-md-6 col-lg-6 col-6 table-col">
+                        <table class="bingo-table">
+                            <tr>
+                                <th class="bold">B</th>
+                                <th class="bold">I</th>
+                                <th class="bold">N</th>
+                                <th class="bold">G</th>
+                                <th class="bold">O</th>
+                            </tr>
+                            <tr>
+                                <td id="square1">1</td>
+                                <td id="square16">16</td>
+                                <td id="square31">31</td>
+                                <td id="square46">46</td>
+                                <td id="square61">61</td>
+                            </tr>
+                            <tr>
+                                <td id="square2">2</td>
+                                <td id="square17">17</td>
+                                <td id="square32">32</td>
+                                <td id="square47">47</td>
+                                <td id="square62">62</td>
+                            </tr>
+                            <tr>
+                                <td id="square3">3</td>
+                                <td id="square18">18</td>
+                                <td id="square33">33</td>
+                                <td id="square48">48</td>
+                                <td id="square63">63</td>
+                            </tr>
+                            <tr>
+                                <td id="square4">4</td>
+                                <td id="square19">19</td>
+                                <td id="square34">34</td>
+                                <td id="square49">49</td>
+                                <td id="square64">64</td>
+                            </tr>
+                            <tr>
+                                <td id="square5">5</td>
+                                <td id="square20">20</td>
+                                <td id="square35">35</td>
+                                <td id="square50">50</td>
+                                <td id="square65">65</td>
+                            </tr>
+                            <tr>
+                                <td id="square6">6</td>
+                                <td id="square21">21</td>
+                                <td id="square36">36</td>
+                                <td id="square51">51</td>
+                                <td id="square66">66</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col-sm-6 col-md-6 col-lg-6 col-6 table-col">
+                        <table class="bingo-table">
+                            <tr>
+                                <th class="bold">B</th>
+                                <th class="bold">I</th>
+                                <th class="bold">N</th>
+                                <th class="bold">G</th>
+                                <th class="bold">O</th>
+                            </tr>
+                            <tr>
+                                <td id="square1">1</td>
+                                <td id="square16">16</td>
+                                <td id="square31">31</td>
+                                <td id="square46">46</td>
+                                <td id="square61">61</td>
+                            </tr>
+                            <tr>
+                                <td id="square2">2</td>
+                                <td id="square17">17</td>
+                                <td id="square32">32</td>
+                                <td id="square47">47</td>
+                                <td id="square62">62</td>
+                            </tr>
+                            <tr>
+                                <td id="square3">3</td>
+                                <td id="square18">18</td>
+                                <td id="square33">33</td>
+                                <td id="square48">48</td>
+                                <td id="square63">63</td>
+                            </tr>
+                            <tr>
+                                <td id="square4">4</td>
+                                <td id="square19">19</td>
+                                <td id="square34">34</td>
+                                <td id="square49">49</td>
+                                <td id="square64">64</td>
+                            </tr>
+                            <tr>
+                                <td id="square5">5</td>
+                                <td id="square20">20</td>
+                                <td id="square35">35</td>
+                                <td id="square50">50</td>
+                                <td id="square65">65</td>
+                            </tr>
+                            <tr>
+                                <td id="square6">6</td>
+                                <td id="square21">21</td>
+                                <td id="square36">36</td>
+                                <td id="square51">51</td>
+                                <td id="square66">66</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 col-md-6 col-lg-6 col-6 table-col">
+                        <table class="bingo-table">
+                            <tr>
+                                <th class="bold">B</th>
+                                <th class="bold">I</th>
+                                <th class="bold">N</th>
+                                <th class="bold">G</th>
+                                <th class="bold">O</th>
+                            </tr>
+                            <tr>
+                                <td id="square1">1</td>
+                                <td id="square16">16</td>
+                                <td id="square31">31</td>
+                                <td id="square46">46</td>
+                                <td id="square61">61</td>
+                            </tr>
+                            <tr>
+                                <td id="square2">2</td>
+                                <td id="square17">17</td>
+                                <td id="square32">32</td>
+                                <td id="square47">47</td>
+                                <td id="square62">62</td>
+                            </tr>
+                            <tr>
+                                <td id="square3">3</td>
+                                <td id="square18">18</td>
+                                <td id="square33">33</td>
+                                <td id="square48">48</td>
+                                <td id="square63">63</td>
+                            </tr>
+                            <tr>
+                                <td id="square4">4</td>
+                                <td id="square19">19</td>
+                                <td id="square34">34</td>
+                                <td id="square49">49</td>
+                                <td id="square64">64</td>
+                            </tr>
+                            <tr>
+                                <td id="square5">5</td>
+                                <td id="square20">20</td>
+                                <td id="square35">35</td>
+                                <td id="square50">50</td>
+                                <td id="square65">65</td>
+                            </tr>
+                            <tr>
+                                <td id="square6">6</td>
+                                <td id="square21">21</td>
+                                <td id="square36">36</td>
+                                <td id="square51">51</td>
+                                <td id="square66">66</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col-sm-6 col-md-6 col-lg-6 col-6 table-col">
+                        <table class="bingo-table">
+                            <tr>
+                                <th class="bold">B</th>
+                                <th class="bold">I</th>
+                                <th class="bold">N</th>
+                                <th class="bold">G</th>
+                                <th class="bold">O</th>
+                            </tr>
+                            <tr>
+                                <td id="square1">1</td>
+                                <td id="square16">16</td>
+                                <td id="square31">31</td>
+                                <td id="square46">46</td>
+                                <td id="square61">61</td>
+                            </tr>
+                            <tr>
+                                <td id="square2">2</td>
+                                <td id="square17">17</td>
+                                <td id="square32">32</td>
+                                <td id="square47">47</td>
+                                <td id="square62">62</td>
+                            </tr>
+                            <tr>
+                                <td id="square3">3</td>
+                                <td id="square18">18</td>
+                                <td id="square33">33</td>
+                                <td id="square48">48</td>
+                                <td id="square63">63</td>
+                            </tr>
+                            <tr>
+                                <td id="square4">4</td>
+                                <td id="square19">19</td>
+                                <td id="square34">34</td>
+                                <td id="square49">49</td>
+                                <td id="square64">64</td>
+                            </tr>
+                            <tr>
+                                <td id="square5">5</td>
+                                <td id="square20">20</td>
+                                <td id="square35">35</td>
+                                <td id="square50">50</td>
+                                <td id="square65">65</td>
+                            </tr>
+                            <tr>
+                                <td id="square6">6</td>
+                                <td id="square21">21</td>
+                                <td id="square36">36</td>
+                                <td id="square51">51</td>
+                                <td id="square66">66</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <script>
+                        function showPopup() {
+                            const popup = document.getElementById('popup');
+                            popup.style.display = 'block';
+                        }
+
+                        function closePopup() {
+                            const popup = document.getElementById('popup');
+                            popup.style.display = 'none';
+                        }
+                    </script>
+                    <style>
+                        #popup {
+                            display: none;
+                            position: fixed;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                            padding: 20px;
+                            background-color: white;
+                            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                            z-index: 1000;
+                        }
+
+                        #popup button {
+                            margin-top: 10px;
+                        }
+
+                        #popup-background {
+                            display: none;
+                            position: fixed;
+                            top: 50%;
+                            left: 50%;
+                            width: 100%;
+                            height: 100%;
+                            background-color: rgba(0, 0, 0, 0.5);
+                            z-index: 999;
+                        }
+                    </style>
+        </head>
+        <body>
+        <div class="d-flex align-items-center">
+            <div class="row">
+            </div>
+            <button class="upload-btn btn desktop" style="margin-right: 10px;" onclick="showPopup()">BINGO</button>
+            <a href="payment.html">
+                <button class="upload-btn btn desktop">BUY MORE CARDS</button>
+            </a>
+        </div>
+        <div id="popup-background"></div>
+
+        <div id="popup">
+            <h2 class="cheering-text">You Won the Game!</h2>
+            <button id="closePopupButton" class="btn btn-secondary">Close</button>
+            <button id="playAgainButton" class="btn btn-primary">Play Again</button>
+        </div>
+        
+        
+        </div>
+        </div>
+
+       <script>
+        document.addEventListener("DOMContentLoaded", function () {
+    // Get the video element
+    const video = document.getElementById("mainVideo");
+
+    // Get all the bingo number cells
+    const bingoCells = document.querySelectorAll(".bingo-table td");
+
+    // Add event listeners to the video to enable/disable bingo cell click listeners
+    video.addEventListener("play", enableBingoClicks);
+    video.addEventListener("pause", disableBingoClicks);
+    video.addEventListener("ended", disableBingoClicks);
+
+    // Get the play again button and add an event listener
+    const playAgainButton = document.getElementById("playAgainButton");
+    playAgainButton.addEventListener("click", playAgain);
+
+    // Get the close button and add an event listener
+    const closePopupButton = document.getElementById("closePopupButton");
+    closePopupButton.addEventListener("click", closePopup);
+
+    // Function to enable bingo cell click listeners
+    function enableBingoClicks() {
+        bingoCells.forEach((cell) => {
+            cell.addEventListener("click", cellClickListener);
+        });
+    }
+
+    // Function to disable bingo cell click listeners
+    function disableBingoClicks() {
+        bingoCells.forEach((cell) => {
+            cell.removeEventListener("click", cellClickListener);
+        });
+    }
+
+    function cellClickListener(event) {
+        // Toggle the crossed-out class and red background on click
+        this.classList.toggle("crossed-out");
+        this.classList.toggle("red-background");
+
+        // Check for a win condition
+        checkWinCondition();
+    }
+
+    function checkWinCondition() {
+        const bingoTables = document.querySelectorAll(".bingo-table");
+
+        // Check each table
+        bingoTables.forEach((table) => {
+            const rows = table.querySelectorAll("tr");
+            let cols = [[], [], [], [], []];
+
+            // Gather columns data
+            rows.forEach((row, rowIndex) => {
+                if (rowIndex > 0) { // Skip the header row
+                    const cells = row.querySelectorAll("td");
+                    cells.forEach((cell, colIndex) => {
+                        cols[colIndex].push(cell);
+                    });
+                }
+            });
+
+            // Check for horizontal, vertical, and diagonal wins
+            if (checkRows(rows) || checkCols(cols) || checkDiagonals(rows)) {
+                showPopup();
+                // Disable further clicks
+                disableBingoClicks();
+            }
+        });
+    }
+
+    function checkRows(rows) {
+        for (let i = 1; i < rows.length; i++) { // Skip the header row
+            const cells = rows[i].querySelectorAll("td");
+            if ([...cells].every(cell => cell.classList.contains("crossed-out"))) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    function checkCols(cols) {
+        for (let i = 0; i < cols.length; i++) {
+            if (cols[i].every(cell => cell.classList.contains("crossed-out"))) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    function checkDiagonals(rows) {
+        const leftDiagonal = [rows[1].querySelectorAll("td")[0], rows[2].querySelectorAll("td")[1], rows[3].querySelectorAll("td")[2], rows[4].querySelectorAll("td")[3], rows[5].querySelectorAll("td")[4]];
+        const rightDiagonal = [rows[1].querySelectorAll("td")[4], rows[2].querySelectorAll("td")[3], rows[3].querySelectorAll("td")[2], rows[4].querySelectorAll("td")[1], rows[5].querySelectorAll("td")[0]];
+
+        if (leftDiagonal.every(cell => cell.classList.contains("crossed-out")) || rightDiagonal.every(cell => cell.classList.contains("crossed-out"))) {
+            return true;
+        }
+        return false;
+    }
+
+    function showPopup() {
+        const popup = document.getElementById('popup');
+        popup.style.display = 'block';
+
+        const background = document.getElementById('popup-background');
+        background.style.display = 'block';
+    }
+
+    function closePopup() {
+        const popup = document.getElementById('popup');
+        popup.style.display = 'none';
+
+        const background = document.getElementById('popup-background');
+        background.style.display = 'none';
+    }
+
+    function playAgain() {
+        location.reload();
+    }
+});
+
+       </script>
+
+        <div class="col-sm-12 col-md-12 col-lg-12 col-12">
+            <div
+                id="carouselExampleControls2"
+                style="background: none"
+                class="carousel slide mt-5 mobile"
+                data-bs-ride="carousel"
+            >
+                <div class="carousel-inner" id="carouselInnerMobile"></div>
+                <button
+                    class="carousel-control-prev"
+                    type="button"
+                    data-bs-target="#carouselExampleControls2"
+                    data-bs-slide="prev"
+                >
+                <span
+                    class="carousel-control-prev-icon"
+                    aria-hidden="true"
+                ></span>
+                <span class="">Previous</span>
+                </button>
+                <button
+                    class="carousel-control-next"
+                    type="button"
+                    data-bs-target="#carouselExampleControls2"
+                    data-bs-slide="next"
+                >
+                <span
+                    class="carousel-control-next-icon"
+                    aria-hidden="true"
+                ></span>
+                <span class="">Next</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+
+<section id="footer">
+    <div class="container">
+        <hr />
+        <div class="row">
+            <div class="col-md-4 col-12 col-sm-12 col-lg-4">
+                <img
+                    src="./static/images/logos/GOS_500x500.png"
+                    class="footer-logo"
+                />
+                <p class="footer-p">
+                    Dabbers at the ready (or your online version anyway), as it’s time
+                    to play online bingo at Mecca Bingo. So Mecca yourself comfy and
+                    click on your chosen game for all the fun of the bingo hall in the
+                    comfort of your own home.
+                </p>
+
+                <div class="social-link">
+                    <a href="#" class="social-link" target="_blank">
+                        <i class="fa fa-twitter" aria-hidden="true"></i>
+                    </a>
+                    <a href="#" class="social-link" target="_blank">
+                        <i class="fa fa-reddit-alien" aria-hidden="true"></i>
+                    </a>
+                    <a href="#" class="social-link" target="_blank">
+                        <i class="fa fa-telegram" aria-hidden="true"></i>
+                    </a>
+                    <a href="#" class="social-link" target="_blank">
+                        <i class="fa fa-pinterest" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-1 col-12 col-sm-12 col-lg-1"></div>
+            <div class="col-md-3 col-12 col-sm-12 col-lg-3">
+                <h1 class="footer-h1">Useful Links</h1>
+                <ul class="footer-ul">
+                    <a href="slingo.html">
+                        <li class="footer-li">
+                            <i class="fa fa-angle-right" aria-hidden="true"></i> Slingo
+                        </li>
+                    </a>
+                    <a href="./slot.html" target="_blank">
+                        <li class="footer-li">
+                            <i class="fa fa-angle-right" aria-hidden="true"></i> Slots
+                        </li>
+                    </a>
+                    <a href="casino.html">
+                        <li class="footer-li">
+                            <i class="fa fa-angle-right" aria-hidden="true"></i> Casino
+                        </li>
+                    </a>
+
+                    <a href="promos.html">
+                        <li class="footer-li">
+                            <i class="fa fa-angle-right" aria-hidden="true"></i> Promo
+                        </li>
+                    </a>
+
+                    <a href="./dashboard.html">
+                        <li class="footer-li">
+                            <i class="fa fa-angle-right" aria-hidden="true"></i> Dashboard
+                        </li>
+                    </a>
+                </ul>
+            </div>
+            <div class="col-md-4 col-12 col-sm-12 col-lg-4">
+                <h1 class="footer-h1">Twitter Feed</h1>
+                <p class="footer-p">
+                    More about crypto implementation in travel industry :
+                    <a class="footer-link" href="https://t.co/JHBAS345"
+                    >https://t.co/JHBAS345</a
+                    >
+                </p>
+                <p class="footer-p">
+                    More infotamation about YTR Coin :
+                    <a class="footer-link" href="https://t.co/JHSD34JHB"
+                    >https://t.co/JHSD34JHB</a
+                    >
+                </p>
+            </div>
+        </div>
+        <div class="copyright">
+            Copyright © 2024, Global Open Sports. All rights reserved. GOS Team
+        </div>
+    </div>
+</section>
+
+<div class="social-links">
+    <a href="#"
+    ><i class="fa fa-twitter social-link" aria-hidden="true"></i></a
+    ><br />
+    <a href="#"
+    ><i class="fa fa-facebook social-link" aria-hidden="true"></i></a
+    ><br />
+    <a href="#"
+    ><i class="fa fa-linkedin social-link" aria-hidden="true"></i></a
+    ><br />
+    <a href="#"
+    ><i class="fa fa-pinterest social-link" aria-hidden="true"></i></a
+    ><br />
+</div>
+
+<a href="#banner"
+><i class="fa fa-angle-up arrow" aria-hidden="true"></i
+></a>
+<script>
+    $(document).ready(function () {
+        jQuery.fn.carousel.Constructor.TRANSITION_DURATION = 10000; // 2 seconds
+        fetchVideos();
+    });
+
+    function fetchVideos() {
+        fetch("http://localhost:4000/api/videos")
+            .then((response) => response.json())
+            .then((data) => {
+                const carouselInner = document.getElementById("carouselInner");
+                const carouselInnerMobile = document.getElementById(
+                    "carouselInnerMobile"
+                );
+
+                // Clear existing inner HTML
+                carouselInner.innerHTML = "";
+                carouselInnerMobile.innerHTML = "";
+
+                // Loop through data in groups of three
+                for (let i = 0; i < data.length; i += 3) {
+                    const group = data.slice(i, i + 3); // Get three items
+
+                    const isActive = i === 0 ? "active" : "";
+                    const cardGroup = `
+          <div class="carousel-item ${isActive}">
+            <div class="row">
+              ${group
+                        .map(
+                            (video) => `
+                <div class="col-md-4 col-4 col-sm-4 col-lg-4">
+                  <div class="card" data-video-url="${video.videoUrl}">
+                    <img src="${video.thumbnailUrl}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title" style="font-size:24px;">Game1</h5>
+                    </div>
+                  </div>
+                </div>
+              `
+                        )
+                        .join("")}
+            </div>
+          </div>
+        `;
+                    carouselInner.innerHTML += cardGroup;
+                    carouselInnerMobile.innerHTML += cardGroup;
+                }
+
+                // Add event listeners to cards
+                document.querySelectorAll(".card").forEach((card) => {
+                    card.addEventListener("click", (e) => {
+                        const videoUrl = card.getAttribute("data-video-url");
+                        const mainVideo = document.getElementById("mainVideo");
+                        mainVideo.querySelector("source").setAttribute("src", videoUrl);
+                        mainVideo.load();
+                        mainVideo.play();
+                    });
+                });
+            })
+            .catch((error) => console.error("Error fetching videos:", error));
+    }
+</script>
+
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+    crossorigin="anonymous"
+></script>
+<script
+    src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+    crossorigin="anonymous"
+></script>
+</body>
+</html>
+ 

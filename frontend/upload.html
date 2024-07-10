@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Upload Video</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+      integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link href="./static/css/dashboard.css" rel="stylesheet" />
+    <link href="./static/css/styles.css" rel="stylesheet" />
+    <link rel="icon" href="./static/images/logos/GOS_500x500.png" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css"
+    />
+    <style>
+      .dropdown-item {
+        color: white;
+        padding: 10px 30px;
+      }
+
+      .dropdown-item:hover {
+        border-radius: 0px;
+        background: #353537;
+      }
+
+      th {
+        font-size: 18px;
+      }
+
+      .liveStreaming-cont table td {
+        padding: 10px;
+        border: 2px #666 solid;
+        text-align: center;
+        font-size: 18px;
+      }
+
+      .liveStreaming-cont table th {
+        padding: 10px;
+        border: 2px #666 solid;
+        text-align: center;
+        font-size: 18px;
+      }
+    </style>
+  </head>
+
+  <body style="background-color: #fff">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">
+        <img
+          src="{{ url_for('static', filename='Images/logo.png') }}"
+          class="logo"
+        />
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="{{url_for('dashboard')}}">Bills</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="{{url_for('stockInSummary')}}"
+              >Stock Management</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{url_for('logout')}}">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="sidebar">
+      <div class="logo-details">
+        <div class="logo_name">
+          <img src="./static/images/logos/GOS_500x500.png" class="logo" />
+        </div>
+        <i class="bx bx-menu" id="btn"></i>
+      </div>
+      <ul class="nav-list">
+        <li>
+          <a href="./dashboard.html">
+            <i class="fa fa-file-text-o"></i>
+            <span class="links_name">Events </span>
+          </a>
+          <span class="tooltip">Events</span>
+        </li>
+        <li>
+          <a href="./event_manage.html">
+            <i class="fa fa-list-alt"></i>
+            <span class="links_name">Events Management</span>
+          </a>
+          <span class="tooltip">Events Management</span>
+        </li>
+        <li>
+          <a href="./upload.html" style="background-color: #84c69b">
+            <i class="fa fa-video-camera"></i>
+            <span class="links_name">Upload Video</span>
+          </a>
+          <span class="tooltip">Upload Video</span>
+        </li>
+        <li>
+          <a href="{{url_for('logout')}}">
+            <i class="fa fa-sign-out" aria-hidden="true"></i>
+            <span class="links_name">Logout</span>
+          </a>
+          <span class="tooltip">Logout</span>
+        </li>
+      </ul>
+    </div>
+    <section class="home-section">
+      <div class="text">
+        <div class="container">
+          <div class="greeting-info">
+            <h2 class="greeting">Hello Global Open Sports !</h2>
+            <h3 class="statisctics-h3">From Here you can manage your Events</h3>
+          </div>
+          <div class="mydate">Date :- 08/06/2024</div>
+        </div>
+      </div>
+      <h1 class="bill-no">Upload Pre Recorded Events</h1>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 col-12 col-sm-12 col-lg-4">
+            <label class="update-label">Bingo Games</label>
+            <input
+              type="text"
+              class="form-control update-form"
+              placeholder="Enter Number of Bingo Games"
+              value="3"
+              name="userName"
+              required
+              id="bingoInput"
+            />
+            <a
+              onclick="createBingoGames()"
+              class="btn btn-lg button-53 update-btn"
+              style="
+                padding: 5px 30px;
+                color: white;
+                background-color: #84c69b;
+                text-align: center;
+              "
+            >
+              Add Games
+            </a>
+          </div>
+        </div>
+        <div class="row upload-row" id="bingoContainer">
+          <div class="col-md-4 col-12 col-sm-12 col-lg-4">
+            <div class="card" style="width: 100%">
+              <img
+                src="./static/images/bingo3.png"
+                class="card-img-top"
+                alt="..."
+                id="thumbnailPreview"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Game1</h5>
+                <div style="text-align: center">
+                  <label
+                    class="btn btn-block play-btn"
+                    style="font-size: 14px; cursor: pointer"
+                  >
+                    Upload Thumbnail
+                    <input
+                      type="file"
+                      accept="image/*"
+                      style="display: none"
+                      id="thumbnailInput"
+                    />
+                  </label>
+                </div>
+                <div style="text-align: center">
+                  <label
+                    class="btn btn-block second-play-btn"
+                    style="font-size: 14px; cursor: pointer"
+                  >
+                    Upload Video
+                    <input
+                      type="file"
+                      accept="video/*"
+                      style="display: none"
+                      id="videoInput"
+                    />
+                  </label>
+                </div>
+                <form action="" class="prize-form" id="uploadForm">
+                  <label class="update-label prize">Prize</label>
+                  <input
+                    type="text"
+                    class="form-control update-form prize-input"
+                    placeholder="Enter Prize"
+                    name="prize"
+                    id="prizeInput"
+                    required
+                  />
+                  <div class="select-color">
+                    <div class="dropdown">
+                      <button
+                        class="btn btn-secondary dropdown-toggle"
+                        type="button"
+                        id="dropdownMenuButton"
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                      >
+                        Choose Colour
+                      </button>
+                      <div
+                        class="dropdown-menu"
+                        aria-labelledby="dropdownMenuButton"
+                        id="colorSelector"
+                      >
+                        <a class="dropdown-item" href="#" data-color="1_Blue"
+                          ><img src="./static/Card Colors Images/1_Blue.png"
+                        /></a>
+                        <a class="dropdown-item" href="#" data-color="2_Orange"
+                          ><img src="./static/Card Colors Images/2_Orange.png"
+                        /></a>
+                        <a class="dropdown-item" href="#" data-color="3_Green"
+                          ><img src="./static/Card Colors Images/3_Green.png"
+                        /></a>
+                        <a class="dropdown-item" href="#" data-color="4_Yellow"
+                          ><img src="./static/Card Colors Images/4_Yellow.png"
+                        /></a>
+                        <a class="dropdown-item" href="#" data-color="5_Pink"
+                          ><img src="./static/Card Colors Images/5_Pink.png"
+                        /></a>
+                        <a class="dropdown-item" href="#" data-color="6_Gray"
+                          ><img src="./static/Card Colors Images/6_Gray.png"
+                        /></a>
+                        <a class="dropdown-item" href="#" data-color="7_Olive"
+                          ><img src="./static/Card Colors Images/7_Olive.png"
+                        /></a>
+                        <a class="dropdown-item" href="#" data-color="8_Brown"
+                          ><img src="./static/Card Colors Images/8_Brown.png"
+                        /></a>
+                        <a class="dropdown-item" href="#" data-color="9_Red"
+                          ><img src="./static/Card Colors Images/9_Red.png"
+                        /></a>
+                        <a class="dropdown-item" href="#" data-color="10_Purple"
+                          ><img src="./static/Card Colors Images/10_Purple.png"
+                        /></a>
+                        <a class="dropdown-item" href="#" data-color="11_Black"
+                          ><img src="./static/Card Colors Images/11_Black.png"
+                        /></a>
+                        <a class="dropdown-item" href="#" data-color="12_Aqua"
+                          ><img src="./static/Card Colors Images/12_Aqua.png"
+                        /></a>
+                        <a
+                          class="dropdown-item"
+                          href="#"
+                          data-color="13_Blue_Stripe"
+                          ><img
+                            src="./static/Card Colors Images/13_Blue_Stripe.png"
+                        /></a>
+                        <a
+                          class="dropdown-item"
+                          href="#"
+                          data-color="14_Orange_Stripe"
+                          ><img
+                            src="./static/Card Colors Images/14_Orange_Stripe.png"
+                        /></a>
+                        <a
+                          class="dropdown-item"
+                          href="#"
+                          data-color="15_Green_Stripe"
+                          ><img
+                            src="./static/Card Colors Images/15_Green_Stripe.png"
+                        /></a>
+                        <a
+                          class="dropdown-item"
+                          href="#"
+                          data-color="16_Yellow_Stripe"
+                          ><img
+                            src="./static/Card Colors Images/16_Yellow_Stripe.png"
+                        /></a>
+                        <a
+                          class="dropdown-item"
+                          href="#"
+                          data-color="17_Pink_Stripe"
+                          ><img
+                            src="./static/Card Colors Images/17_Pink_Stripe.png"
+                        /></a>
+                        <a
+                          class="dropdown-item"
+                          href="#"
+                          data-color="18_Gray_Stripe"
+                          ><img
+                            src="./static/Card Colors Images/18_Gray_Stripe.png"
+                        /></a>
+                        <a
+                          class="dropdown-item"
+                          href="#"
+                          data-color="19_Olive_Stripe"
+                          ><img
+                            src="./static/Card Colors Images/19_Olive_Stripe.png"
+                        /></a>
+                        <a
+                          class="dropdown-item"
+                          href="#"
+                          data-color="20_Brown_Stripe"
+                          ><img
+                            src="./static/Card Colors Images/20_Brown_Stripe.png"
+                        /></a>
+                        <a
+                          class="dropdown-item"
+                          href="#"
+                          data-color="21_Red_Stripe"
+                          ><img
+                            src="./static/Card Colors Images/21_Red_Stripe.png"
+                        /></a>
+                        <a
+                          class="dropdown-item"
+                          href="#"
+                          data-color="22_Black_Stripe"
+                          ><img
+                            src="./static/Card Colors Images/22_Black_Stripe.png"
+                        /></a>
+                        <a
+                          class="dropdown-item"
+                          href="#"
+                          data-color="23_Purple_Stripe"
+                          ><img
+                            src="./static/Card Colors Images/23_Purple_Stripe.png"
+                        /></a>
+                        <a
+                          class="dropdown-item"
+                          href="#"
+                          data-color="24_Aqua_Stripe"
+                          ><img
+                            src="./static/Card Colors Images/24_Aqua_Stripe.png"
+                        /></a>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+                <button class="btn btn-primary" id="createCardButton">
+                  Upload
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Container to append the new cards -->
+        <div class="row upload-row" id="newCardsContainer"></div>
+      </div>
+      <!-- Carousel for the uploaded cards -->
+      <div class="col-sm-12 col-md-12 col-lg-12 col-12">
+        <div
+          id="carouselExampleControls2"
+          style="background: none"
+          class="carousel slide mt-5 mobile"
+          data-bs-ride="carousel"
+        >
+          <div class="carousel-inner" id="carouselInner">
+            <div class="carousel-item active">
+              <div class="row">
+                <!-- Example card -->
+                <div class="col-md-4 col-4 col-sm-4 col-lg-4">
+                  <div class="card">
+                    <img
+                      src="./static/images/bingo1.png"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                    <div class="card-body">
+                      <h5
+                        class="card-title"
+                        style="font-size: 24px; position: relative; top: 10px"
+                      >
+                        Game1
+                      </h5>
+                    </div>
+                  </div>
+                </div>
+                <!-- More cards here -->
+              </div>
+            </div>
+          </div>
+          <button
+            class="carousel-control-prev"
+            type="button"
+            style="display: none"
+            data-bs-target="#carouselExampleControls2"
+            data-bs-slide="prev"
+          >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            style="display: none"
+            data-bs-target="#carouselExampleControls2"
+            data-bs-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="uploadProgressModal"
+      tabindex="-1"
+      aria-labelledby="uploadProgressModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="uploadProgressModalLabel">
+              Upload Progress
+            </h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="progress">
+              <div
+                class="progress-bar"
+                role="progressbar"
+                style="width: 0%"
+                aria-valuenow="0"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                id="uploadProgressBar"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const thumbnailInput = document.getElementById("thumbnailInput");
+        const videoInput = document.getElementById("videoInput");
+        const prizeInput = document.getElementById("prizeInput");
+        const colorSelector = document.getElementById("colorSelector");
+        const createCardButton = document.getElementById("createCardButton");
+        const newCardsContainer = document.getElementById("newCardsContainer");
+        const thumbnailPreview = document.getElementById("thumbnailPreview");
+        const uploadProgressModal = new bootstrap.Modal(
+          document.getElementById("uploadProgressModal"),
+          { keyboard: false }
+        );
+        const uploadProgressBar = document.getElementById("uploadProgressBar");
+
+        const notyf = new Notyf();
+
+        let selectedColor = "";
+        let selectedThumbnail = "";
+        let selectedVideo = "";
+
+        // Handle thumbnail selection
+        thumbnailInput.addEventListener("change", (e) => {
+          const file = e.target.files[0];
+          const reader = new FileReader();
+          reader.onload = function (event) {
+            thumbnailPreview.src = event.target.result;
+            selectedThumbnail = event.target.result;
+          };
+          reader.readAsDataURL(file);
+        });
+
+        // Handle video selection
+        videoInput.addEventListener("change", (e) => {
+          const file = e.target.files[0];
+          selectedVideo = URL.createObjectURL(file);
+        });
+
+        // Handle color selection
+        colorSelector.addEventListener("click", (e) => {
+          if (e.target.tagName === "IMG") {
+            selectedColor = e.target.parentElement.getAttribute("data-color");
+          }
+        });
+
+        // Handle card creation and form submission
+        createCardButton.addEventListener("click", () => {
+          if (
+            prizeInput.value === "" ||
+            !selectedColor ||
+            !thumbnailInput.files[0] ||
+            !videoInput.files[0]
+          ) {
+            alert(
+              "Please fill out all fields and upload both a thumbnail and video."
+            );
+            return;
+          }
+
+          const formData = new FormData();
+          formData.append("prize", prizeInput.value);
+          formData.append("colorCode", selectedColor);
+          formData.append("thumbnail", thumbnailInput.files[0]);
+          formData.append("video", videoInput.files[0]);
+
+          // Show the upload progress modal
+          uploadProgressModal.show();
+
+          fetch("http://localhost:4000/api/upload", {
+            method: "POST",
+            body: formData,
+          })
+            .then((response) => {
+              if (!response.ok) {
+                throw new Error("Network response was not ok");
+              }
+              return response.json();
+            })
+            .then((data) => {
+              const newCard = document.createElement("div");
+              newCard.className = "col-md-4 col-4 col-sm-4 col-lg-4";
+              newCard.innerHTML = `
+                <div class="card" data-video-url="${data.videoUrl}">
+                  <img src="${data.thumbnailUrl}" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title" style="font-size:24px;">Game</h5>
+                    <p class="card-text">Prize: ${prizeInput.value}</p>
+                    <p class="card-text">Color: ${selectedColor}</p>
+                  </div>
+                </div>
+              `;
+              newCardsContainer.appendChild(newCard);
+              notyf.success("Video and thumbnail uploaded successfully!");
+              uploadProgressModal.hide();
+            })
+            .catch((error) => {
+              console.error("Error:", error);
+              notyf.error("Failed to upload video and thumbnail.");
+              uploadProgressModal.hide();
+            });
+        });
+      });
+    </script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

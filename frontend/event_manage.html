@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Event Management</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+      integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+      crossorigin="anonymous"
+    />
+    <link href="./static/css/dashboard.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="./static/images/logos/GOS_500x500.png" />
+    <style>
+      .dropdown-item {
+        color: white;
+        padding: 10px 30px;
+      }
+      .dropdown-item:hover {
+        border-radius: 0px;
+        background: #353537;
+      }
+      th {
+        font-size: 18px;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">
+        <img src="./static/images/logos/GOS_500x500.png" class="logo" />
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="./dashboard.html">Bills</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="./stockInSummary.html"
+              >Stock Management</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./logout.html">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="sidebar">
+      <div class="logo-details">
+        <div class="logo_name">
+          <img src="./static/images/logos/GOS_500x500.png" class="logo" />
+        </div>
+        <i class="bx bx-menu" id="btn"></i>
+      </div>
+      <ul class="nav-list">
+        <li>
+          <a href="./dashboard.html">
+            <i class="fa fa-file-text-o"></i>
+            <span class="links_name">Events</span>
+          </a>
+          <span class="tooltip">Events</span>
+        </li>
+        <li>
+          <a href="./event_manage.html" style="background-color: #84c69b">
+            <i class="fa fa-list-alt"></i>
+            <span class="links_name">Events Management</span>
+          </a>
+          <span class="tooltip">Events Management</span>
+        </li>
+        <li>
+          <a href="./upload.html">
+            <i class="fa fa-video-camera"></i>
+            <span class="links_name">Upload Video</span>
+          </a>
+          <span class="tooltip">Upload Video</span>
+        </li>
+        <li>
+          <a href="./logout.html">
+            <i class="fa fa-sign-out" aria-hidden="true"></i>
+            <span class="links_name">Logout</span>
+          </a>
+          <span class="tooltip">Logout</span>
+        </li>
+      </ul>
+    </div>
+
+    <section class="home-section">
+      <div class="text">
+        <div class="container">
+          <div class="greeting-info">
+            <h2 class="greeting">Hello Global Open Sports!</h2>
+            <h3 class="statisctics-h3">From Here you can manage your Events</h3>
+          </div>
+          <div class="mydate">Date :- 08/06/2024</div>
+        </div>
+      </div>
+      <div class="container-fluid template-container">
+        <div class="row">
+          <div class="col-sm-12 col-lg-6 col-md-6 col-12">
+            <h1 class="template-header">Event Management</h1>
+          </div>
+        </div>
+
+        <table class="table table-responsive-sm" id="myTable">
+          <thead class="thead-dark table-header">
+            <tr class="table-success">
+              <th style="text-align: center" scope="col">Event No.</th>
+              <th style="text-align: center" scope="col">Name</th>
+              <th style="text-align: center" scope="col">Start Date</th>
+              <th style="text-align: center" scope="col">End Date</th>
+              <th style="text-align: center" scope="col">Price</th>
+              <th style="text-align: center" scope="col">Location</th>
+              <th style="text-align: center" scope="col">Edit</th>
+              <th style="text-align: center" scope="col">Delete</th>
+            </tr>
+          </thead>
+          <tbody id="eventTableBody">
+            <!-- Event rows will be inserted here dynamically -->
+          </tbody>
+        </table>
+
+        <script>
+          document.addEventListener("DOMContentLoaded", function () {
+            fetchEvents();
+
+            async function fetchEvents() {
+              try {
+                const response = await fetch(
+                  "http://localhost:4000/api/events"
+                );
+                if (!response.ok) {
+                  throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                const events = await response.json();
+                const tableBody = document.getElementById("eventTableBody");
+                tableBody.innerHTML = "";
+
+                events.forEach((event, index) => {
+                  const row = document.createElement("tr");
+
+                  row.innerHTML = `
+                    <td style="text-align: center;">${index + 1}</td>
+                    <td style="text-align: center;">${event.eventName}</td>
+                    <td style="text-align: center;">${event.startDate}</td>
+                    <td style="text-align: center;">${event.endDate}</td>
+                    <td style="text-align: center;">${event.price || "N/A"}</td>
+                    <td style="text-align: center;">${
+                      event.location || "N/A"
+                    }</td>
+                    <td style="text-align: center;" class="edit-button">
+                      <a href="./edit_events.html?eventId=${
+                        event._id
+                      }"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
+                    </td>
+                    <td style="text-align: center;" class="delete-button">
+                      <i class="fa fa-trash-o" aria-hidden="true" data-id="${
+                        event._id
+                      }"></i> Delete
+                    </td>
+                  `;
+
+                  tableBody.appendChild(row);
+                });
+
+                // Add event listener for delete buttons
+                document
+                  .querySelectorAll(".delete-button")
+                  .forEach((button) => {
+                    button.addEventListener("click", async function () {
+                      const eventId =
+                        this.querySelector(".fa-trash-o").getAttribute(
+                          "data-id"
+                        );
+                      if (
+                        confirm("Are you sure you want to delete this event?")
+                      ) {
+                        try {
+                          const response = await fetch(
+                            `http://localhost:4000/api/events/${eventId}`,
+                            {
+                              method: "DELETE",
+                            }
+                          );
+                          if (response.ok) {
+                            this.closest("tr").remove();
+                            alert("Event deleted successfully");
+                          } else {
+                            alert("Error deleting event");
+                          }
+                        } catch (error) {
+                          console.error("Error deleting event:", error);
+                          alert("Error deleting event");
+                        }
+                      }
+                    });
+                  });
+              } catch (error) {
+                console.error("Error fetching events:", error);
+              }
+            }
+          });
+        </script>
+      </div>
+    </section>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const myDrop = document.getElementById("months");
+        if (myDrop) {
+          myDrop.addEventListener("change", function (event) {
+            document.getElementById("month-form").submit();
+          });
+        }
+
+        let sidebar = document.querySelector(".sidebar");
+        let closeBtn = document.querySelector("#btn");
+        if (closeBtn) {
+          closeBtn.addEventListener("click", () => {
+            sidebar.classList.toggle("open");
+            menuBtnChange(); //calling the function(optional)
+          });
+        }
+
+        function menuBtnChange() {
+          if (sidebar.classList.contains("open")) {
+            closeBtn.classList.replace("bx-menu", "bx-menu-alt-right"); //replacing the icons class
+          } else {
+            closeBtn.classList.replace("bx-menu-alt-right", "bx-menu"); //replacing the icons class
+          }
+        }
+      });
+    </script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

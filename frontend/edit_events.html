@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Edit Event Details</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+      integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+      crossorigin="anonymous"
+    />
+    <link href="./static/css/dashboard.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="./static/images/logos/GOS_500x500.png" />
+    <link href="./static/css/styles.css" rel="stylesheet" />
+
+    <style>
+      .dropdown-item {
+        color: white;
+        padding: 10px 30px;
+      }
+
+      .dropdown-item:hover {
+        border-radius: 0px;
+        background: #353537;
+      }
+    </style>
+  </head>
+
+  <body style="background-color: #e4e9f7">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#">Stock Management</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="sidebar">
+      <div class="logo-details">
+        <div class="logo_name">
+          <img src="./static/images/logos/GOS_500x500.png" class="logo" />
+        </div>
+        <i class="bx bx-menu" id="btn"></i>
+      </div>
+      <ul class="nav-list">
+        <li>
+          <a href="./dashboard.html">
+            <i class="fa fa-file-text-o"></i>
+            <span class="links_name">Events</span>
+          </a>
+          <span class="tooltip">Events</span>
+        </li>
+
+        <li>
+          <a href="./event_manage.html">
+            <i class="fa fa-list-alt"></i>
+            <span class="links_name">Events Management</span>
+          </a>
+          <span class="tooltip">Events Management</span>
+        </li>
+
+        <li>
+          <a href="./upload.html">
+            <i class="fa fa-video-camera"></i>
+            <span class="links_name">Upload Video</span>
+          </a>
+          <span class="tooltip">Upload Video</span>
+        </li>
+
+        <li>
+          <a href="#">
+            <i class="fa fa-sign-out" aria-hidden="true"></i>
+            <span class="links_name">Logout</span>
+          </a>
+          <span class="tooltip">Logout</span>
+        </li>
+      </ul>
+    </div>
+    <section class="home-section">
+      <div class="text">
+        <div class="container">
+          <div class="greeting-info">
+            <h2 class="greeting">Hello Global Open Sports !</h2>
+            <h3 class="statisctics-h3">Welcome to Event Creation Section!</h3>
+          </div>
+
+          <div class="mydate">Date :- 08/06/2024</div>
+        </div>
+      </div>
+
+      <h1 class="bill-no">Edit Your Event</h1>
+
+      <div class="container">
+        <form id="eventForm" method="POST">
+          <div class="row update-row">
+            <div class="col-md-4 col-12 col-sm-12 col-lg-4">
+              <label class="update-label">Event Name</label>
+              <input
+                type="text"
+                class="form-control update-form"
+                placeholder="Enter Event Name"
+                name="eventName"
+                required
+              />
+            </div>
+            <div class="col-md-4 col-12 col-sm-12 col-lg-4">
+              <label class="update-label">Event Start Time</label>
+              <input
+                type="time"
+                class="form-control update-form"
+                placeholder="Enter Event Start Time"
+                name="startTime"
+                required
+              />
+            </div>
+            <div class="col-md-4 col-12 col-sm-12 col-lg-4">
+              <label class="update-label">Event End Time</label>
+              <input
+                type="time"
+                class="form-control update-form"
+                placeholder="Enter Event End Time"
+                name="endTime"
+                required
+              />
+            </div>
+          </div>
+          <div class="row update-row">
+            <div class="col-12 col-sm-12 col-lg-3 col-md-3">
+              <label class="update-label">Event Start Date</label>
+              <input
+                type="date"
+                class="form-control update-form"
+                placeholder="Enter Event Start Date"
+                name="startDate"
+                required
+              />
+            </div>
+            <div class="col-12 col-sm-12 col-lg-3 col-md-3">
+              <label class="update-label">Event End Date</label>
+              <input
+                type="date"
+                class="form-control update-form"
+                placeholder="Enter Event End Date"
+                name="endDate"
+                required
+              />
+            </div>
+            <div class="col-md-3 col-12 col-sm-12 col-lg-3">
+              <label class="update-label">Prize</label>
+              <input
+                type="text"
+                class="form-control update-form"
+                placeholder="Enter Prize Amount"
+                name="prize"
+                required
+              />
+            </div>
+            <div class="col-md-3 col-12 col-sm-12 col-lg-3">
+              <label class="update-label">Event Location</label>
+              <input
+                type="text"
+                class="form-control update-form"
+                placeholder="Enter Event Location"
+                name="location"
+                required
+              />
+            </div>
+          </div>
+          <div class="row update-row">
+            <div class="col-md-12 col-12 col-sm-12 col-lg-12">
+              <label class="update-label">Event Details</label>
+              <textarea
+                style="height: 200px"
+                class="form-control update-form textarea-event"
+                placeholder="Enter Event Details"
+                name="details"
+              ></textarea>
+            </div>
+          </div>
+          <section id="upload-section">
+            <div class="container">
+              <div class="upload-container">
+                <div class="upload-content">
+                  <p><i class="fa fa-upload" aria-hidden="true"></i></p>
+                  <p class="large">Drag and drop Banner to upload</p>
+                  <p class="small">Upload Banner of Events</p>
+                </div>
+                <button class="upload-btn btn">
+                  <input type="file" /> SELECT FILES
+                </button>
+              </div>
+            </div>
+          </section>
+          <div class="row" style="text-align: center">
+            <div class="col-md-4 col-12 col-sm-12 col-lg-4"></div>
+            <div
+              class="col-md-4 col-12 col-sm-12 col-lg-4 mx-auto"
+              style="margin-left: auto; margin-right: auto; margin-bottom: 50px"
+            >
+              <button
+                type="submit"
+                class="btn btn-lg button-52 update-btn"
+                style="
+                  padding: 15px 100px;
+                  color: white;
+                  text-align: center;
+                  margin-top: 20px;
+                "
+              >
+                Update Event
+              </button>
+            </div>
+            <div class="col-md-4 col-12 col-sm-12 col-lg-4"></div>
+          </div>
+        </form>
+
+        <script>
+          document.addEventListener("DOMContentLoaded", async function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const eventId = urlParams.get("eventId");
+
+            if (eventId) {
+              try {
+                const response = await fetch(
+                  `http://localhost:4000/api/events/${eventId}`
+                );
+                const event = await response.json();
+
+                if (event) {
+                  document.querySelector('[name="eventName"]').value =
+                    event.eventName;
+                  document.querySelector('[name="startDate"]').value =
+                    event.startDate.split("T")[0];
+                  document.querySelector('[name="endDate"]').value =
+                    event.endDate.split("T")[0];
+                  document.querySelector('[name="startTime"]').value =
+                    event.startTime.split("T")[1].slice(0, 5);
+                  document.querySelector('[name="endTime"]').value =
+                    event.endTime.split("T")[1].slice(0, 5);
+                  document.querySelector('[name="prize"]').value =
+                    event.prize || "";
+                  document.querySelector('[name="location"]').value =
+                    event.location || "";
+                  document.querySelector('[name="details"]').value =
+                    event.details || "";
+                }
+              } catch (error) {
+                console.error("Error fetching event details:", error);
+              }
+            }
+
+            const form = document.getElementById("eventForm");
+            if (form) {
+              form.addEventListener("submit", async function (event) {
+                event.preventDefault();
+
+                const formData = {
+                  eventName: event.target.eventName.value,
+                  startDate: event.target.startDate.value,
+                  endDate: event.target.endDate.value,
+                  startTime: event.target.startTime.value,
+                  endTime: event.target.endTime.value,
+                  prize: event.target.prize.value,
+                  location: event.target.location.value,
+                  details: event.target.details.value,
+                };
+
+                try {
+                  const response = await fetch(
+                    `http://localhost:4000/api/events/${eventId}`,
+                    {
+                      method: "PUT",
+                      headers: {
+                        "Content-Type": "application/json",
+                      },
+                      body: JSON.stringify(formData),
+                    }
+                  );
+
+                  if (response.ok) {
+                    alert("Event updated successfully");
+                  } else {
+                    alert("Error: " + (await response.json()).message);
+                  }
+                } catch (error) {
+                  console.error("Error updating event:", error);
+                  alert("Error updating event");
+                }
+              });
+            }
+          });
+        </script>
+      </div>
+    </section>
+    <script>
+      let sidebar = document.querySelector(".sidebar");
+      let closeBtn = document.querySelector("#btn");
+      let searchBtn = document.querySelector(".bx-search");
+
+      closeBtn.addEventListener("click", () => {
+        sidebar.classList.toggle("open");
+        menuBtnChange(); //calling the function(optional)
+      });
+
+      searchBtn.addEventListener("click", () => {
+        // Sidebar open when you click on the search icon
+        sidebar.classList.toggle("open");
+        menuBtnChange(); //calling the function(optional)
+      });
+
+      // following are the code to change sidebar button(optional)
+      function menuBtnChange() {
+        if (sidebar.classList.contains("open")) {
+          closeBtn.classList.replace("bx-menu", "bx-menu-alt-right"); //replacing the icons class
+        } else {
+          closeBtn.classList.replace("bx-menu-alt-right", "bx-menu"); //replacing the icons class
+        }
+      }
+    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

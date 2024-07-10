@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Generate Bingo Card</title>
+  </head>
+  <body>
+    <h1>Generate Bingo Card</h1>
+    <form action="/generate-card" method="get">
+      <button type="submit">Generate</button>
+    </form>
+    <% if (card && card.length > 0) { %>
+    <h2>Your Bingo Card</h2>
+    <ul>
+      <% card.forEach(function(number) { %>
+      <li><%= number %></li>
+      <% }); %>
+    </ul>
+    <% } else { %>
+    <p>No card available</p>
+    <% } %>
+  </body>
+</html>
