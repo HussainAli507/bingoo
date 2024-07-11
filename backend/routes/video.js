@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const video = require("../models/video");
 
-// Handle video upload
 router.post("/upload", (req, res) => {
   if (req.file) {
     const video = new Video({

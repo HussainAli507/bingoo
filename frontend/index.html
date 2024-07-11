@@ -1,829 +1,933 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Home</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link href="./static/css/styles.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <link rel="icon" href="./static/images/logos/GOS_500x500.png">
-</head>
+    <link rel="icon" href="./static/images/logos/GOS_500x500.png" />
+  </head>
 
-<body>
-
+  <body>
     <section id="banner">
-        <div class="overlay">
-            <nav class="navbar navbar-expand-lg">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="#">
-                        <img src="./static/images/logos/GOS_500x500.png" class="nav-logo" />
-                    </a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"><i class="fa fa-2x fa-bars" style="color: #84C69B;font-size:18px;background-color:white;padding:10px;" aria-hidden="true"></i></span>
+      <div class="overlay">
+        <nav class="navbar navbar-expand-lg">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+              <img
+                src="./static/images/logos/GOS_500x500.png"
+                class="nav-logo"
+              />
+            </a>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarTogglerDemo02"
+              aria-controls="navbarTogglerDemo02"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"
+                ><i
+                  class="fa fa-2x fa-bars"
+                  style="
+                    color: #84c69b;
+                    font-size: 18px;
+                    background-color: white;
+                    padding: 10px;
+                  "
+                  aria-hidden="true"
+                ></i
+              ></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-                <ul class="navbar-nav ms-auto ms-5 mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" style="color:#84C69B;" href="./index.html">Home</a>
-                    </li>
-                    <!-- <li class="nav-item">
+              <ul class="navbar-nav ms-auto ms-5 mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link" style="color: #84c69b" href="./index.html"
+                    >Home</a
+                  >
+                </li>
+                <!-- <li class="nav-item">
                         <a class="nav-link" href="slingo.html">Slingo</a>
                     </li> -->
-                    <!-- <li class="nav-item">
+                <!-- <li class="nav-item">
                         <a class="nav-link" href="./slot.html">Slots</a>
                     </li> -->
-                    <!-- <li class="nav-item">
+                <!-- <li class="nav-item">
                         <a class="nav-link" href="casino.html">Casino</a>
                     </li> -->
-                    <!-- <li class="nav-item">
+                <!-- <li class="nav-item">
                         <a class="nav-link" href="promos.html">Promos</a>
                     </li> -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="bingo.html">Bingo</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="events.html">Events</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="liveStreaming.html">LiveStream</a>
-                    </li>
-                    
-                </ul>
-                <div class="d-flex">
-                    <a href="./login.html" class="btn btn-outline-success me-2 login-btn" type="button">Login</a>
-                    <a href="./join.html" class="btn btn-success me-2 join-btn" type="button">Join</a>
-                </div>
+                <li class="nav-item">
+                  <a class="nav-link" href="bingo.html">Bingo</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="events.html" id="eventsLink"
+                    >Events</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link"
+                    href="liveStreaming.html"
+                    id="liveStreamLink"
+                    >LiveStream</a
+                  >
+                </li>
+              </ul>
+              <div class="d-flex">
+                <a
+                  href="./login.html"
+                  class="btn btn-outline-success me-2 login-btn"
+                  type="button"
+                  >Login</a
+                >
+                <a
+                  href="./join.html"
+                  class="btn btn-success me-2 join-btn"
+                  type="button"
+                  >Join</a
+                >
+              </div>
             </div>
-                </div>
-            </nav>
-            <div class="container banner-container">
-                <div class="row">
-                    <div class="col-md-5 col-lg-5 col-sm-12 col-12" data-aos="zoom-in">
-                        <h1 class="banner-h1">
-                            WELCOME TO GLOBAL OPEN SPORTS
-                        </h1>
-                        <p class="banner-p">
-                            Now you can enjoy your favourite game online with stacks of refreshing extras when you play
-                            online bingo with us. As one of the best online bingo sites out there, we take pleasure in
-                            providing an array of fantastic bingo promotions and high-quality bingo.
-                        </p>
-                        <a href="#" class="btn btn-lg explore-btn">
-                            Explore
-                        </a>
-                    </div>
-                </div>
+          </div>
+        </nav>
+        <div class="container banner-container">
+          <div class="row">
+            <div class="col-md-5 col-lg-5 col-sm-12 col-12" data-aos="zoom-in">
+              <h1 class="banner-h1">WELCOME TO GLOBAL OPEN SPORTS</h1>
+              <p class="banner-p">
+                Now you can enjoy your favourite game online with stacks of
+                refreshing extras when you play online bingo with us. As one of
+                the best online bingo sites out there, we take pleasure in
+                providing an array of fantastic bingo promotions and
+                high-quality bingo.
+              </p>
+              <a href="#" class="btn btn-lg explore-btn"> Explore </a>
             </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <section id="offer">
-        <div class="container">
-            <div class="row">
-                <img src="./static/images/banner-offer.png" class="offer-img" data-aos="zoom-in">
-            </div>
+      <div class="container">
+        <div class="row">
+          <img
+            src="./static/images/banner-offer.png"
+            class="offer-img"
+            data-aos="zoom-in"
+          />
         </div>
+      </div>
     </section>
 
     <section id="bingo-first">
-        <div class="container">
-
-            <div class="row">
-                <div class="col-md-3 col-12 col-sm-12 col-lg-3">
-                    <h1 class="co-back" data-aos="zoom-in">
-                        BINGO
-                    </h1>
-                </div>
-                <div class="col-md-3 col-12 col-sm-12 col-lg-3">
-
-                </div>
-                <div class="col-md-3 col-12 col-sm-12 col-lg-3">
-
-                </div>
-                <div class="col-md-3 col-12 col-sm-12 col-lg-3 my-playbtn">
-                <a href="bingo.html"> <button class="login-btn" data-aos="zoom-in">
-                        Play Bingo Now
-                    </button> </a>
-                </div>
-            </div>
-
-                <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <div class="row">
-                                <div class="col-md-3 col-12 col-sm-12 col-lg-3">
-                                    <div class="card" >
-                                        <img src="./static/images/bingo1.png" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <h5 class="card-title">
-                                                Loose Women
-                                            </h5>
-                                            <p class="card-p">
-                                                Some quick example text to build on the card title and make up the bulk of the
-                                                card's
-                                                content.
-                                            </p>
-                                            <div style="text-align: center;">
-                                                <a href="#" class="btn btn-block play-btn">Play</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 col-12 col-sm-12 col-lg-3">
-                                    <div class="card" >
-                                        <img src="./static/images/bingo3.png" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <h5 class="card-title">
-                                                Turbo Gold: Speed Bingo
-                                            </h5>
-                                            <p class="card-p">
-                                                Some quick example text to build on the card title and make up the bulk of the
-                                                card's
-                                                content.
-                                            </p>
-                                            <div style="text-align: center;">
-                                                <a href="#" class="btn btn-block play-btn">Play</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 col-12 col-sm-12 col-lg-3">
-                                    <div class="card">
-                                        <img src="./static/images/bingo4.png" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <h5 class="card-title">
-                                                Age of the Gods Bingo
-                                            </h5>
-                                            <p class="card-p">
-                                                Some quick example text to build on the card title and make up the bulk of the
-                                                card's
-                                                content.
-                                            </p>
-                                            <div style="text-align: center;">
-                                                <a href="#" class="btn btn-block play-btn">Play</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 col-12 col-sm-12 col-lg-3" >
-                                    <div class="card">
-                                        <img src="./static/images/bingo2.png" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <h5 class="card-title">
-                                                Main Event: Big Cash Money
-                                            </h5>
-                                            <p class="card-p">
-                                                Some quick example text to build on the card title and make up the bulk of the
-                                                card's
-                                                content.
-                                            </p>
-                                            <div style="text-align: center;">
-                                                <a href="#" class="btn btn-block play-btn">Play</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-        
-                        </div>
-                        <div class="carousel-item">
-                            <div class="row">
-                                <div class="col-md-3 col-12 col-sm-12 col-lg-3">
-                                    <div class="card" style="width: 100%;">
-                                        <img src="./static/images/bingo3.png" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <h5 class="card-title">
-                                                Turbo Gold: Speed Bingo
-                                            </h5>
-                                            <p class="card-p">
-                                                Some quick example text to build on the card title and make up the bulk of the
-                                                card's
-                                                content.
-                                            </p>
-                                            <div style="text-align: center;">
-                                                <a href="#" class="btn btn-block play-btn">Play</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 col-12 col-sm-12 col-lg-3">
-                                    <div class="card" style="width: 100%;">
-                                        <img src="./static/images/bingo1.png" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <h5 class="card-title">
-                                                Loose Women
-                                            </h5>
-                                            <p class="card-p">
-                                                Some quick example text to build on the card title and make up the bulk of the
-                                                card's
-                                                content.
-                                            </p>
-                                            <div style="text-align: center;">
-                                                <a href="#" class="btn btn-block play-btn">Play</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-        
-                                <div class="col-md-3 col-12 col-sm-12 col-lg-3">
-                                    <div class="card" style="width: 100%;">
-                                        <img src="./static/images/bingo2.png" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <h5 class="card-title">
-                                                Main Event: Big Cash Money
-                                            </h5>
-                                            <p class="card-p">
-                                                Some quick example text to build on the card title and make up the bulk of the
-                                                card's
-                                                content.
-                                            </p>
-                                            <div style="text-align: center;">
-                                                <a href="#" class="btn btn-block play-btn">Play</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 col-12 col-sm-12 col-lg-3">
-                                    <div class="card" style="width: 100%;">
-                                        <img src="./static/images/bingo4.png" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <h5 class="card-title">
-                                                Age of the Gods Bingo
-                                            </h5>
-                                            <p class="card-p">
-                                                Some quick example text to build on the card title and make up the bulk of the
-                                                card's
-                                                content.
-                                            </p>
-                                            <div style="text-align: center;">
-                                                <a href="#" class="btn btn-block play-btn">Play</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-        
-                            </div>
-                        </div>
-                        
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
-                        data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
-                        data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
-                </div>
-      
-        
-            <div class="row events-row">
-                <div class="col-md-3 col-12 col-sm-12 col-lg-3">
-                    <h1 class="co-back" data-aos="zoom-in">
-                        EVENTS
-                    </h1>
-                </div>
-                <div class="col-md-3 col-12 col-sm-12 col-lg-3">
-
-                </div>
-                <div class="col-md-3 col-12 col-sm-12 col-lg-3">
-
-                </div>
-                <div class="col-md-3 col-12 col-sm-12 col-lg-3 my-playbtn">
-                <a href="events.html"> <button class="login-btn" data-aos="zoom-in">
-                       Watch Events
-                    </button> </a>
-                </div>
-            </div>
-            <div id="carouselExampleControls3" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <div class="row">
-                            <div class="col-md-3 col-12 col-sm-12 col-lg-3">
-                                <div class="card" >
-                                    <img src="./static/images/bingo1.png" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">
-                                            Loose Women
-                                        </h5>
-                                        <p class="card-p">
-                                            Some quick example text to build on the card title and make up the bulk of the
-                                            card's
-                                            content.
-                                        </p>
-                                        <div style="text-align: center;">
-                                            <a href="#" class="btn btn-block play-btn">Play</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-12 col-sm-12 col-lg-3">
-                                <div class="card" >
-                                    <img src="./static/images/bingo3.png" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">
-                                            Turbo Gold: Speed Bingo
-                                        </h5>
-                                        <p class="card-p">
-                                            Some quick example text to build on the card title and make up the bulk of the
-                                            card's
-                                            content.
-                                        </p>
-                                        <div style="text-align: center;">
-                                            <a href="#" class="btn btn-block play-btn">Play</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-12 col-sm-12 col-lg-3">
-                                <div class="card">
-                                    <img src="./static/images/bingo4.png" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">
-                                            Age of the Gods Bingo
-                                        </h5>
-                                        <p class="card-p">
-                                            Some quick example text to build on the card title and make up the bulk of the
-                                            card's
-                                            content.
-                                        </p>
-                                        <div style="text-align: center;">
-                                            <a href="#" class="btn btn-block play-btn">Play</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-12 col-sm-12 col-lg-3" >
-                                <div class="card">
-                                    <img src="./static/images/bingo2.png" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">
-                                            Main Event: Big Cash Money
-                                        </h5>
-                                        <p class="card-p">
-                                            Some quick example text to build on the card title and make up the bulk of the
-                                            card's
-                                            content.
-                                        </p>
-                                        <div style="text-align: center;">
-                                            <a href="#" class="btn btn-block play-btn">Play</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-    
-                    </div>
-                    <div class="carousel-item">
-                        <div class="row">
-                            <div class="col-md-3 col-12 col-sm-12 col-lg-3">
-                                <div class="card" style="width: 100%;">
-                                    <img src="./static/images/bingo3.png" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">
-                                            Turbo Gold: Speed Bingo
-                                        </h5>
-                                        <p class="card-p">
-                                            Some quick example text to build on the card title and make up the bulk of the
-                                            card's
-                                            content.
-                                        </p>
-                                        <div style="text-align: center;">
-                                            <a href="#" class="btn btn-block play-btn">Play</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-12 col-sm-12 col-lg-3">
-                                <div class="card" style="width: 100%;">
-                                    <img src="./static/images/bingo1.png" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">
-                                            Loose Women
-                                        </h5>
-                                        <p class="card-p">
-                                            Some quick example text to build on the card title and make up the bulk of the
-                                            card's
-                                            content.
-                                        </p>
-                                        <div style="text-align: center;">
-                                            <a href="#" class="btn btn-block play-btn">Play</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-    
-                            <div class="col-md-3 col-12 col-sm-12 col-lg-3">
-                                <div class="card" style="width: 100%;">
-                                    <img src="./static/images/bingo2.png" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">
-                                            Main Event: Big Cash Money
-                                        </h5>
-                                        <p class="card-p">
-                                            Some quick example text to build on the card title and make up the bulk of the
-                                            card's
-                                            content.
-                                        </p>
-                                        <div style="text-align: center;">
-                                            <a href="#" class="btn btn-block play-btn">Play</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-12 col-sm-12 col-lg-3">
-                                <div class="card" style="width: 100%;">
-                                    <img src="./static/images/bingo4.png" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">
-                                            Age of the Gods Bingo
-                                        </h5>
-                                        <p class="card-p">
-                                            Some quick example text to build on the card title and make up the bulk of the
-                                            card's
-                                            content.
-                                        </p>
-                                        <div style="text-align: center;">
-                                            <a href="#" class="btn btn-block play-btn">Play</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-    
-                        </div>
-                    </div>
-                    
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls3"
-                    data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls3"
-                    data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-            </div>
-
-            
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 col-12 col-sm-12 col-lg-3">
+            <h1 class="co-back" data-aos="zoom-in">BINGO</h1>
+          </div>
+          <div class="col-md-3 col-12 col-sm-12 col-lg-3"></div>
+          <div class="col-md-3 col-12 col-sm-12 col-lg-3"></div>
+          <div class="col-md-3 col-12 col-sm-12 col-lg-3 my-playbtn">
+            <a href="bingo.html">
+              <button class="login-btn" data-aos="zoom-in">
+                Play Bingo Now
+              </button>
+            </a>
+          </div>
         </div>
+
+        <div
+          id="carouselExampleControls"
+          class="carousel slide"
+          data-bs-ride="carousel"
+        >
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="row">
+                <div class="col-md-3 col-12 col-sm-12 col-lg-3">
+                  <div class="card">
+                    <img
+                      src="./static/images/bingo1.png"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                    <div class="card-body">
+                      <h5 class="card-title">Loose Women</h5>
+                      <p class="card-p">
+                        Some quick example text to build on the card title and
+                        make up the bulk of the card's content.
+                      </p>
+                      <div style="text-align: center">
+                        <a href="#" class="btn btn-block play-btn">Play</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3 col-12 col-sm-12 col-lg-3">
+                  <div class="card">
+                    <img
+                      src="./static/images/bingo3.png"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                    <div class="card-body">
+                      <h5 class="card-title">Turbo Gold: Speed Bingo</h5>
+                      <p class="card-p">
+                        Some quick example text to build on the card title and
+                        make up the bulk of the card's content.
+                      </p>
+                      <div style="text-align: center">
+                        <a href="#" class="btn btn-block play-btn">Play</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3 col-12 col-sm-12 col-lg-3">
+                  <div class="card">
+                    <img
+                      src="./static/images/bingo4.png"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                    <div class="card-body">
+                      <h5 class="card-title">Age of the Gods Bingo</h5>
+                      <p class="card-p">
+                        Some quick example text to build on the card title and
+                        make up the bulk of the card's content.
+                      </p>
+                      <div style="text-align: center">
+                        <a href="#" class="btn btn-block play-btn">Play</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3 col-12 col-sm-12 col-lg-3">
+                  <div class="card">
+                    <img
+                      src="./static/images/bingo2.png"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                    <div class="card-body">
+                      <h5 class="card-title">Main Event: Big Cash Money</h5>
+                      <p class="card-p">
+                        Some quick example text to build on the card title and
+                        make up the bulk of the card's content.
+                      </p>
+                      <div style="text-align: center">
+                        <a href="#" class="btn btn-block play-btn">Play</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row">
+                <div class="col-md-3 col-12 col-sm-12 col-lg-3">
+                  <div class="card" style="width: 100%">
+                    <img
+                      src="./static/images/bingo3.png"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                    <div class="card-body">
+                      <h5 class="card-title">Turbo Gold: Speed Bingo</h5>
+                      <p class="card-p">
+                        Some quick example text to build on the card title and
+                        make up the bulk of the card's content.
+                      </p>
+                      <div style="text-align: center">
+                        <a href="#" class="btn btn-block play-btn">Play</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3 col-12 col-sm-12 col-lg-3">
+                  <div class="card" style="width: 100%">
+                    <img
+                      src="./static/images/bingo1.png"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                    <div class="card-body">
+                      <h5 class="card-title">Loose Women</h5>
+                      <p class="card-p">
+                        Some quick example text to build on the card title and
+                        make up the bulk of the card's content.
+                      </p>
+                      <div style="text-align: center">
+                        <a href="#" class="btn btn-block play-btn">Play</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-3 col-12 col-sm-12 col-lg-3">
+                  <div class="card" style="width: 100%">
+                    <img
+                      src="./static/images/bingo2.png"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                    <div class="card-body">
+                      <h5 class="card-title">Main Event: Big Cash Money</h5>
+                      <p class="card-p">
+                        Some quick example text to build on the card title and
+                        make up the bulk of the card's content.
+                      </p>
+                      <div style="text-align: center">
+                        <a href="#" class="btn btn-block play-btn">Play</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3 col-12 col-sm-12 col-lg-3">
+                  <div class="card" style="width: 100%">
+                    <img
+                      src="./static/images/bingo4.png"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                    <div class="card-body">
+                      <h5 class="card-title">Age of the Gods Bingo</h5>
+                      <p class="card-p">
+                        Some quick example text to build on the card title and
+                        make up the bulk of the card's content.
+                      </p>
+                      <div style="text-align: center">
+                        <a href="#" class="btn btn-block play-btn">Play</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#carouselExampleControls"
+            data-bs-slide="prev"
+          >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#carouselExampleControls"
+            data-bs-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+
+        <div class="row events-row">
+          <div class="col-md-3 col-12 col-sm-12 col-lg-3">
+            <h1 class="co-back" data-aos="zoom-in">EVENTS</h1>
+          </div>
+          <div class="col-md-3 col-12 col-sm-12 col-lg-3"></div>
+          <div class="col-md-3 col-12 col-sm-12 col-lg-3"></div>
+          <div class="col-md-3 col-12 col-sm-12 col-lg-3 my-playbtn">
+            <a href="events.html">
+              <button class="login-btn" data-aos="zoom-in">Watch Events</button>
+            </a>
+          </div>
+        </div>
+        <div
+          id="carouselExampleControls3"
+          class="carousel slide"
+          data-bs-ride="carousel"
+        >
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="row">
+                <div class="col-md-3 col-12 col-sm-12 col-lg-3">
+                  <div class="card">
+                    <img
+                      src="./static/images/bingo1.png"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                    <div class="card-body">
+                      <h5 class="card-title">Loose Women</h5>
+                      <p class="card-p">
+                        Some quick example text to build on the card title and
+                        make up the bulk of the card's content.
+                      </p>
+                      <div style="text-align: center">
+                        <a href="#" class="btn btn-block play-btn">Play</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3 col-12 col-sm-12 col-lg-3">
+                  <div class="card">
+                    <img
+                      src="./static/images/bingo3.png"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                    <div class="card-body">
+                      <h5 class="card-title">Turbo Gold: Speed Bingo</h5>
+                      <p class="card-p">
+                        Some quick example text to build on the card title and
+                        make up the bulk of the card's content.
+                      </p>
+                      <div style="text-align: center">
+                        <a href="#" class="btn btn-block play-btn">Play</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3 col-12 col-sm-12 col-lg-3">
+                  <div class="card">
+                    <img
+                      src="./static/images/bingo4.png"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                    <div class="card-body">
+                      <h5 class="card-title">Age of the Gods Bingo</h5>
+                      <p class="card-p">
+                        Some quick example text to build on the card title and
+                        make up the bulk of the card's content.
+                      </p>
+                      <div style="text-align: center">
+                        <a href="#" class="btn btn-block play-btn">Play</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3 col-12 col-sm-12 col-lg-3">
+                  <div class="card">
+                    <img
+                      src="./static/images/bingo2.png"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                    <div class="card-body">
+                      <h5 class="card-title">Main Event: Big Cash Money</h5>
+                      <p class="card-p">
+                        Some quick example text to build on the card title and
+                        make up the bulk of the card's content.
+                      </p>
+                      <div style="text-align: center">
+                        <a href="#" class="btn btn-block play-btn">Play</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row">
+                <div class="col-md-3 col-12 col-sm-12 col-lg-3">
+                  <div class="card" style="width: 100%">
+                    <img
+                      src="./static/images/bingo3.png"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                    <div class="card-body">
+                      <h5 class="card-title">Turbo Gold: Speed Bingo</h5>
+                      <p class="card-p">
+                        Some quick example text to build on the card title and
+                        make up the bulk of the card's content.
+                      </p>
+                      <div style="text-align: center">
+                        <a href="#" class="btn btn-block play-btn">Play</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3 col-12 col-sm-12 col-lg-3">
+                  <div class="card" style="width: 100%">
+                    <img
+                      src="./static/images/bingo1.png"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                    <div class="card-body">
+                      <h5 class="card-title">Loose Women</h5>
+                      <p class="card-p">
+                        Some quick example text to build on the card title and
+                        make up the bulk of the card's content.
+                      </p>
+                      <div style="text-align: center">
+                        <a href="#" class="btn btn-block play-btn">Play</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-3 col-12 col-sm-12 col-lg-3">
+                  <div class="card" style="width: 100%">
+                    <img
+                      src="./static/images/bingo2.png"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                    <div class="card-body">
+                      <h5 class="card-title">Main Event: Big Cash Money</h5>
+                      <p class="card-p">
+                        Some quick example text to build on the card title and
+                        make up the bulk of the card's content.
+                      </p>
+                      <div style="text-align: center">
+                        <a href="#" class="btn btn-block play-btn">Play</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3 col-12 col-sm-12 col-lg-3">
+                  <div class="card" style="width: 100%">
+                    <img
+                      src="./static/images/bingo4.png"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                    <div class="card-body">
+                      <h5 class="card-title">Age of the Gods Bingo</h5>
+                      <p class="card-p">
+                        Some quick example text to build on the card title and
+                        make up the bulk of the card's content.
+                      </p>
+                      <div style="text-align: center">
+                        <a href="#" class="btn btn-block play-btn">Play</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#carouselExampleControls3"
+            data-bs-slide="prev"
+          >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#carouselExampleControls3"
+            data-bs-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
     </section>
 
-
-    
-
     <section id="top-games">
-        <div class="container">
-            <!-- <h1 class="home-title">
+      <div class="container">
+        <!-- <h1 class="home-title">
                 Play Bingo at Mecca Bingo
             </h1> -->
-            <div class="row">
-                <div class="col-md-1 col-12 col-sm-12 col-lg-1">
+        <div class="row">
+          <div class="col-md-1 col-12 col-sm-12 col-lg-1"></div>
+          <div
+            class="col-md-10 col-12 col-sm-12 col-lg-10 top-games-card"
+            data-aos="flip-right"
+          >
+            <h1 class="top-games-h1" data-aos="">Play Bingo at Mecca Bingo</h1>
+            <hr class="top-games-hr" />
+            <p class="top-games-p">
+              Mecca yourself comfy and get ready to play the best of bingo at
+              Mecca Bingo. We’ve got 90-ball, 80-ball, and 75-ball online bingo
+              games, plus stacks of traditional bingo options – like the classic
+              games you can play in your local – as well a huge selection of
+              unique online bingo games, many of which you can only find right
+              here! If you’d like to get a better idea of the options so you can
+              discover your favourite flavour of bingo, check out our features
+              page for the breakdown.
+            </p>
 
-                </div>
-                <div class="col-md-10 col-12 col-sm-12 col-lg-10 top-games-card" data-aos="flip-right">
-                    <h1 class="top-games-h1" data-aos="">
-                        Play Bingo at Mecca Bingo
-                    </h1>
-                    <hr class="top-games-hr">
-                    <p class="top-games-p">
-                        Mecca yourself comfy and get ready to play the best of bingo at Mecca Bingo. We’ve got 90-ball,
-                        80-ball, and 75-ball online bingo games, plus stacks of traditional bingo options – like the
-                        classic games you can play in your local – as well a huge selection of unique online bingo
-                        games, many of which you can only find right here!
-
-                        If you’d like to get a better idea of the options so you can discover your favourite flavour of
-                        bingo, check out our features page for the breakdown.
-                    </p>
-
-                    <div class="row picture-row">
-                        <div class="col-md-4 col-12 col-sm-12 col-lg-4 play-img-div">
-                            <img src="./static/images/play1.jpeg" class="play-img">
-                        </div>
-                        <div class="col-md-4 col-12 col-sm-12 col-lg-4 play-img-div">
-                            <img src="./static/images/play2.jpeg" class="play-img">
-
-                        </div>
-                        <div class="col-md-4 col-12 col-sm-12 col-lg-4 play-img-div">
-                            <img src="./static/images/play3.jpeg" class="play-img">
-
-                        </div>
-                    </div>
-
-                    <p class="top-games-p top-second-p">
-                        Or, if playing bingo isn’t your jam, you can jump straight into the action with our amazing
-                        collection of online slots and games – including huge jackpot prizes, Megaways, scratchcards,
-                        Mecca Originals and so much more.
-
-                        Want to play bingo at Mecca Bingo? Here’s everything you need to know about online bingo. So get
-                        your dabber ready…
-                    </p>
-                </div>
-                <div class="col-md-1 col-12 col-sm-12 col-lg-1">
-
-                </div>
+            <div class="row picture-row">
+              <div class="col-md-4 col-12 col-sm-12 col-lg-4 play-img-div">
+                <img src="./static/images/play1.jpeg" class="play-img" />
+              </div>
+              <div class="col-md-4 col-12 col-sm-12 col-lg-4 play-img-div">
+                <img src="./static/images/play2.jpeg" class="play-img" />
+              </div>
+              <div class="col-md-4 col-12 col-sm-12 col-lg-4 play-img-div">
+                <img src="./static/images/play3.jpeg" class="play-img" />
+              </div>
             </div>
+
+            <p class="top-games-p top-second-p">
+              Or, if playing bingo isn’t your jam, you can jump straight into
+              the action with our amazing collection of online slots and games –
+              including huge jackpot prizes, Megaways, scratchcards, Mecca
+              Originals and so much more. Want to play bingo at Mecca Bingo?
+              Here’s everything you need to know about online bingo. So get your
+              dabber ready…
+            </p>
+          </div>
+          <div class="col-md-1 col-12 col-sm-12 col-lg-1"></div>
         </div>
+      </div>
     </section>
 
     <section id="faq">
-        <div class="container">
-            <h1 class="faq-h1" data-aos="fade-up">
-                Frequently Asked Questions
-            </h1>
+      <div class="container">
+        <h1 class="faq-h1" data-aos="fade-up">Frequently Asked Questions</h1>
 
-            <div class="row">
-                <div class="col-md-2 col-sm-12 col-12 col-lg-2">
+        <div class="row">
+          <div class="col-md-2 col-sm-12 col-12 col-lg-2"></div>
+          <div class="col-md-8 col-sm-12 col-12 col-lg-8">
+            <h3 id="q1" class="question mt-5" data-aos="fade-up">
+              <i class="fa fa-angle-down" id="first"></i> How Does Online Bingo
+              Work?
+              <p id="a1" class="answer">
+                Imagine enjoying the same great game you play in a club, but
+                being able to do it on the go, at home, or even in your pyjamas.
+                You can play bingo online or via our award-winning app on
+                Android and iOS devices. You can pre-purchase tickets for
+                scheduled games or jump into the action as part of our live
+                schedule. Just pick a room and head into the lobby. You’ll be
+                able to chat to friends, play a fab selection of mini-games or
+                get straight into the fun in the current live bingo games. Or,
+                if you fancy more of a face-to-face social experience, you can
+                find your local Mecca Bingo Club and make it a night out to
+                remember.
+              </p>
+            </h3>
 
-                </div>
-                <div class="col-md-8 col-sm-12 col-12 col-lg-8">
-                    <h3 id="q1" class="question mt-5" data-aos="fade-up">
-                        <i class="fa fa-angle-down" id="first"></i>  How Does Online Bingo Work? 
-                        <p id="a1" class="answer">
-                            Imagine enjoying the same great game you play in a club, but being able to do it on the go,
-                            at home, or even in your pyjamas. You can play bingo online or via our award-winning app on
-                            Android and iOS devices. You can pre-purchase tickets for scheduled games or jump into the
-                            action as part of our live schedule. Just pick a room and head into the lobby. You’ll be
-                            able to chat to friends, play a fab selection of mini-games or get straight into the fun in
-                            the current live bingo games. Or, if you fancy more of a face-to-face social experience, you
-                            can find your local Mecca Bingo Club and make it a night out to remember.
-                        </p>
-                    </h3>
+            <h3 id="q2" class="question" data-aos="fade-up">
+              <i class="fa fa-angle-down" id="second" aria-hidden="true"></i>
+              How To Play Online Bingo?
+              <p id="a2" class="answer">
+                Playing online bingo couldn’t be easier. It’s very similar to
+                playing at your local bingo club. Just in case you haven’t been
+                to a club before, here’s a quick run-down of how to play bingo.
+              </p>
+            </h3>
 
-
-                    <h3 id="q2" class="question" data-aos="fade-up">
-                        <i class="fa fa-angle-down" id="second" aria-hidden="true"></i>   How To Play Online Bingo? 
-                        <p id="a2" class="answer">
-                            Playing online bingo couldn’t be easier. It’s very similar to playing at your local bingo
-                            club. Just in case you haven’t been to a club before, here’s a quick run-down of how to play
-                            bingo.
-                        </p>
-                    </h3>
-
-                    <h3 id="q3" class="question" data-aos="fade-up">
-                        <i class="fa fa-angle-up" id="third"
-                        aria-hidden="true"></i>  Playing Bingo Games Online – What Are The Rules To Know? 
-                        <p id="a3" class="answer">
-                            The rules of bingo are simple to understand but can vary slightly depending on which version
-                            of bingo you’re playing – 90-ball, 80-ball, or 75-ball bingo. 75-ball bingo is the most
-                            traditional format of bingo you’ll play online or in a club. You’ll be dabbing off the
-                            called numbers on a single card containing a grid of 5 numbers across and 5 numbers down.
-                            You’ll have to mark off a whole row to win – usually in any direction across the grid.
-                            80-ball bingo is great for players who deem 90-ball to be a little too slow. Developed with
-                            online bingo players in mind, during 80-ball games you’ll be dabbing on a colour-coordinated
-                            4x4 grid, with different winning patterns to play for. You can choose to manually dab your
-                            grid or you can select the auto-dabbing option for a more laid-back game.
-                        </p>
-                    </h3>
-                    <h3 id="q4" class="question" data-aos="fade-up">
-                        <i class="fa fa-angle-down"
-                        id="fourth" aria-hidden="true"></i>  When You Bet On Bingo with Mecca, Expect the Best Promotion In Town? 
-                        <p id="a4" class="answer">
-                            We love to keep it fresh and offer regular promotions where you can earn a bingo bonus, win
-                            huge cash prizes, and even holidays and cars! You’ll also want to check out our huge
-                            jackpots and fun-filled bingo game schedule, where you’ll find more bingo rooms than you’ve
-                            ever dreamt of.
-                        </p>
-                    </h3>
-                    <h3 id="q5" class="question" data-aos="fade-up">
-                        <i class="fa fa-angle-down" id="fifth" aria-hidden="true"></i>  How To Join Online Bingo? 
-                        <p id="a5" class="answer">
-                            To play online bingo with Mecca Bingo, register with us and follow these steps to get
-                            started
-                        </p>
-                    </h3>
-                    <h3 id="q6" class="question" data-aos="fade-up">
-                        <i class="fa fa-angle-down" id="sixth" aria-hidden="true"></i>  What Are The Online Bingo Calls? 
-                        <p id="a6" class="answer">
-                            From the obvious to the outrageous, bingo calls have been part of British bingo history
-                            since the dawn of this great game. Some are well known and make their way into common slang;
-                            others are built on rhymes and humour. Each one is different, and it can pay off to have
-                            them memorised before you grab a dabber. Here’s our full breakdown of brilliant bingo calls.
-                        </p>
-                    </h3>
-                    <h3 id="q7" class="question" data-aos="fade-up">
-                        <i class="fa fa-angle-down" id="seven"
-                            aria-hidden="true"></i> Can I Play Online Bingo Games With Friends?
-                        <p id="a7" class="answer">
-                            Of course! It’s what we know and love at Mecca – playing as a community. You can join fun
-                            games with friends, or simply chat with no obligation to buy tickets or play. Whether you’re
-                            playing bingo online or in a club, it’s always more fun to play with friends.
-                        </p>
-                    </h3>
-                    <h3 id="q8" class="question" data-aos="fade-up">
-                        <i class="fa fa-angle-down" id="eight"
-                            aria-hidden="true"></i> Play Bingo Online With Mecca Bingo
-                        <p id="a8" class="answer">
-                            Dabbers at the ready (or your online version anyway), as it’s time to play online bingo at
-                            Mecca Bingo. So Mecca yourself comfy and click on your chosen game for all the fun of the
-                            bingo hall in the comfort of your own home. At Mecca, you’ll find all your classic bingo
-                            games, including Main Event Bingo and Gold Bingo. Plus we’ve got some themed online bingo
-                            games that we know you’re going to love. Yes, we’re talking about Deal or No Deal Bingo and
-                            Britain’s Got Talent Bingo. And if you want to really bring the excitement, don’t forget to
-                            check out Emoji Bingo, Lucky for Some Bingo or Super Sonic Bingo. We’ve got so many online
-                            bingo games just waiting for you. Ready to bet on bingo? It’ll be Mecca!
-                        </p>
-                    </h3>
-                </div>
-                <div class="col-md-2 col-sm-12 col-12 col-lg-2">
-
-                </div>
-            </div>
+            <h3 id="q3" class="question" data-aos="fade-up">
+              <i class="fa fa-angle-up" id="third" aria-hidden="true"></i>
+              Playing Bingo Games Online – What Are The Rules To Know?
+              <p id="a3" class="answer">
+                The rules of bingo are simple to understand but can vary
+                slightly depending on which version of bingo you’re playing –
+                90-ball, 80-ball, or 75-ball bingo. 75-ball bingo is the most
+                traditional format of bingo you’ll play online or in a club.
+                You’ll be dabbing off the called numbers on a single card
+                containing a grid of 5 numbers across and 5 numbers down. You’ll
+                have to mark off a whole row to win – usually in any direction
+                across the grid. 80-ball bingo is great for players who deem
+                90-ball to be a little too slow. Developed with online bingo
+                players in mind, during 80-ball games you’ll be dabbing on a
+                colour-coordinated 4x4 grid, with different winning patterns to
+                play for. You can choose to manually dab your grid or you can
+                select the auto-dabbing option for a more laid-back game.
+              </p>
+            </h3>
+            <h3 id="q4" class="question" data-aos="fade-up">
+              <i class="fa fa-angle-down" id="fourth" aria-hidden="true"></i>
+              When You Bet On Bingo with Mecca, Expect the Best Promotion In
+              Town?
+              <p id="a4" class="answer">
+                We love to keep it fresh and offer regular promotions where you
+                can earn a bingo bonus, win huge cash prizes, and even holidays
+                and cars! You’ll also want to check out our huge jackpots and
+                fun-filled bingo game schedule, where you’ll find more bingo
+                rooms than you’ve ever dreamt of.
+              </p>
+            </h3>
+            <h3 id="q5" class="question" data-aos="fade-up">
+              <i class="fa fa-angle-down" id="fifth" aria-hidden="true"></i> How
+              To Join Online Bingo?
+              <p id="a5" class="answer">
+                To play online bingo with Mecca Bingo, register with us and
+                follow these steps to get started
+              </p>
+            </h3>
+            <h3 id="q6" class="question" data-aos="fade-up">
+              <i class="fa fa-angle-down" id="sixth" aria-hidden="true"></i>
+              What Are The Online Bingo Calls?
+              <p id="a6" class="answer">
+                From the obvious to the outrageous, bingo calls have been part
+                of British bingo history since the dawn of this great game. Some
+                are well known and make their way into common slang; others are
+                built on rhymes and humour. Each one is different, and it can
+                pay off to have them memorised before you grab a dabber. Here’s
+                our full breakdown of brilliant bingo calls.
+              </p>
+            </h3>
+            <h3 id="q7" class="question" data-aos="fade-up">
+              <i class="fa fa-angle-down" id="seven" aria-hidden="true"></i> Can
+              I Play Online Bingo Games With Friends?
+              <p id="a7" class="answer">
+                Of course! It’s what we know and love at Mecca – playing as a
+                community. You can join fun games with friends, or simply chat
+                with no obligation to buy tickets or play. Whether you’re
+                playing bingo online or in a club, it’s always more fun to play
+                with friends.
+              </p>
+            </h3>
+            <h3 id="q8" class="question" data-aos="fade-up">
+              <i class="fa fa-angle-down" id="eight" aria-hidden="true"></i>
+              Play Bingo Online With Mecca Bingo
+              <p id="a8" class="answer">
+                Dabbers at the ready (or your online version anyway), as it’s
+                time to play online bingo at Mecca Bingo. So Mecca yourself
+                comfy and click on your chosen game for all the fun of the bingo
+                hall in the comfort of your own home. At Mecca, you’ll find all
+                your classic bingo games, including Main Event Bingo and Gold
+                Bingo. Plus we’ve got some themed online bingo games that we
+                know you’re going to love. Yes, we’re talking about Deal or No
+                Deal Bingo and Britain’s Got Talent Bingo. And if you want to
+                really bring the excitement, don’t forget to check out Emoji
+                Bingo, Lucky for Some Bingo or Super Sonic Bingo. We’ve got so
+                many online bingo games just waiting for you. Ready to bet on
+                bingo? It’ll be Mecca!
+              </p>
+            </h3>
+          </div>
+          <div class="col-md-2 col-sm-12 col-12 col-lg-2"></div>
         </div>
+      </div>
     </section>
 
     <section id="footer">
-        
-        <div class="container">
-            <hr>
-            <div class="row">
-                <div class="col-md-4 col-12 col-sm-12 col-lg-4" data-aos="fade-up">
-                    <img src="./static/images/logos/GOS_500x500.png" class="footer-logo">
-                    <p class="footer-p">
-                        Dabbers at the ready (or your online version anyway), as it’s time to play online bingo at
-                        Mecca Bingo. So Mecca yourself comfy and click on your chosen game for all the fun of the
-                        bingo hall in the comfort of your own home.
-                    </p>
+      <div class="container">
+        <hr />
+        <div class="row">
+          <div class="col-md-4 col-12 col-sm-12 col-lg-4" data-aos="fade-up">
+            <img
+              src="./static/images/logos/GOS_500x500.png"
+              class="footer-logo"
+            />
+            <p class="footer-p">
+              Dabbers at the ready (or your online version anyway), as it’s time
+              to play online bingo at Mecca Bingo. So Mecca yourself comfy and
+              click on your chosen game for all the fun of the bingo hall in the
+              comfort of your own home.
+            </p>
 
-                    <div class="social-link">
-                        <a href="#" class="social-link" target='_blank'>
-                            <i class="fa fa-twitter" aria-hidden="true"></i>
-                        </a>
-                        <a href="#" class="social-link" target='_blank'>
-                            <i class="fa fa-reddit-alien" aria-hidden="true"></i>
-                        </a>
-                        <a href="#" class="social-link" target='_blank'>
-                            <i class="fa fa-telegram" aria-hidden="true"></i>
-                        </a>
-                        <a href="#" class="social-link" target='_blank'>
-                            <i class="fa fa-pinterest" aria-hidden="true"></i>
-                        </a>
-
-                    </div>
-                </div>
-                <div class="col-md-1 col-12 col-sm-12 col-lg-1">
-
-                </div>
-                <div class="col-md-3 col-12 col-sm-12 col-lg-3" data-aos="fade-up">
-                    <h1 class="footer-h1">
-                        Useful Links
-                    </h1>
-                    <ul class="footer-ul">
-                        <a href="slingo.html">
-                            <li class="footer-li">
-                                <i class="fa fa-angle-right" aria-hidden="true"></i> Slingo
-                            </li>
-                        </a>
-                        <a href="slot.html" target="_blank">
-                            <li class="footer-li">
-                                <i class="fa fa-angle-right" aria-hidden="true"></i> Slots
-                            </li>
-                        </a>
-                        <a href="casino.html">
-                            <li class="footer-li">
-                                <i class="fa fa-angle-right" aria-hidden="true"></i> Casino
-                            </li>
-                        </a>
-                        
-                        <a href='promos.html'>
-                            <li class="footer-li">
-                                <i class="fa fa-angle-right" aria-hidden="true"></i> Promo
-                            </li>
-                        </a>
-
-                        <a href='clubs.html'>
-                            <li class="footer-li">
-                                <i class="fa fa-angle-right" aria-hidden="true"></i> Clubs
-                            </li>
-                        </a>
-
-                        <a href='dashboard.html'>
-                            <li class="footer-li">
-                                <i class="fa fa-angle-right" aria-hidden="true"></i> Dashboard
-                            </li>
-                        </a>
-                        
-                    </ul>
-                </div>
-                <div class="col-md-4 col-12 col-sm-12 col-lg-4" data-aos="fade-up">
-                    <h1 class="footer-h1">
-                        Twitter Feed
-                    </h1>
-                    <p class="footer-p">
-                        More about crypto implementation in travel industry : <a class="footer-link"
-                            href="#">https://t.co/JHBAS345</a>
-                    </p>
-                    <p class="footer-p">
-                        More infotamation about YTR Coin : <a class="footer-link"
-                            href="#">https://t.co/JHSD34JHB</a>
-                    </p>
-                </div>
+            <div class="social-link">
+              <a href="#" class="social-link" target="_blank">
+                <i class="fa fa-twitter" aria-hidden="true"></i>
+              </a>
+              <a href="#" class="social-link" target="_blank">
+                <i class="fa fa-reddit-alien" aria-hidden="true"></i>
+              </a>
+              <a href="#" class="social-link" target="_blank">
+                <i class="fa fa-telegram" aria-hidden="true"></i>
+              </a>
+              <a href="#" class="social-link" target="_blank">
+                <i class="fa fa-pinterest" aria-hidden="true"></i>
+              </a>
             </div>
-            <div class="copyright">
-                Copyright © 2024, Global Open Sports. All rights reserved. GOS Team
-            </div>
+          </div>
+          <div class="col-md-1 col-12 col-sm-12 col-lg-1"></div>
+          <div class="col-md-3 col-12 col-sm-12 col-lg-3" data-aos="fade-up">
+            <h1 class="footer-h1">Useful Links</h1>
+            <ul class="footer-ul">
+              <a href="slingo.html">
+                <li class="footer-li">
+                  <i class="fa fa-angle-right" aria-hidden="true"></i> Slingo
+                </li>
+              </a>
+              <a href="slot.html" target="_blank">
+                <li class="footer-li">
+                  <i class="fa fa-angle-right" aria-hidden="true"></i> Slots
+                </li>
+              </a>
+              <a href="casino.html">
+                <li class="footer-li">
+                  <i class="fa fa-angle-right" aria-hidden="true"></i> Casino
+                </li>
+              </a>
+
+              <a href="promos.html">
+                <li class="footer-li">
+                  <i class="fa fa-angle-right" aria-hidden="true"></i> Promo
+                </li>
+              </a>
+
+              <a href="clubs.html">
+                <li class="footer-li">
+                  <i class="fa fa-angle-right" aria-hidden="true"></i> Clubs
+                </li>
+              </a>
+
+              <a href="dashboard.html">
+                <li class="footer-li">
+                  <i class="fa fa-angle-right" aria-hidden="true"></i> Dashboard
+                </li>
+              </a>
+            </ul>
+          </div>
+          <div class="col-md-4 col-12 col-sm-12 col-lg-4" data-aos="fade-up">
+            <h1 class="footer-h1">Twitter Feed</h1>
+            <p class="footer-p">
+              More about crypto implementation in travel industry :
+              <a class="footer-link" href="#">https://t.co/JHBAS345</a>
+            </p>
+            <p class="footer-p">
+              More infotamation about YTR Coin :
+              <a class="footer-link" href="#">https://t.co/JHSD34JHB</a>
+            </p>
+          </div>
         </div>
+        <div class="copyright">
+          Copyright © 2024, Global Open Sports. All rights reserved. GOS Team
+        </div>
+      </div>
     </section>
 
     <div class="social-links">
-        <a href="#"><i class="fa fa-twitter social-link" aria-hidden="true"></i></a><br>
-        <a href="#"><i class="fa fa-facebook social-link" aria-hidden="true"></i></a><br>
-        <a href="#"><i class="fa fa-linkedin social-link" aria-hidden="true"></i></a><br>
-        <a href="#"><i class="fa fa-pinterest social-link" aria-hidden="true"></i></a><br>
-
+      <a href="#"
+        ><i class="fa fa-twitter social-link" aria-hidden="true"></i></a
+      ><br />
+      <a href="#"
+        ><i class="fa fa-facebook social-link" aria-hidden="true"></i></a
+      ><br />
+      <a href="#"
+        ><i class="fa fa-linkedin social-link" aria-hidden="true"></i></a
+      ><br />
+      <a href="#"
+        ><i class="fa fa-pinterest social-link" aria-hidden="true"></i></a
+      ><br />
     </div>
 
-    <a href="#banner"><i class="fa fa-angle-up arrow" aria-hidden="true"></i></a>
+    <a href="#banner"
+      ><i class="fa fa-angle-up arrow" aria-hidden="true"></i
+    ></a>
 
     <script>
-        $(document).ready(function () {
-            $('#a1').show();
-            $('#a2').hide();
-            $('#a3').hide();
-            $('#a4').hide();
-            $('#a5').hide();
-            $('#a6').hide();
-            $('#a7').hide();
-            $('#a8').hide();
-            $('#q1').click(function () {
-                $('#a1').slideToggle("slow");
-                $("#first").toggleClass("fa-angle-up");
-                $("#first").toggleClass("fa-angle-down");
-            });
+      document.addEventListener("DOMContentLoaded", function () {
+        function isLoggedIn() {
+          return localStorage.getItem("token") !== null;
+          console.log("Token:", token);
+        }
 
-            $('#q2').click(function () {
-                $('#a2').slideToggle("slow");
-                $("#second").toggleClass("fa-angle-down");
-                $("#second").toggleClass("fa-angle-up");
-            });
+        function requireLogin(event) {
+          if (!isLoggedIn()) {
+            event.preventDefault();
+            window.location.href = "login.html";
+          }
+        }
 
-            $('#q3').click(function () {
-                $('#a3').slideToggle("slow");
-                $("#third").toggleClass("fa-angle-down");
-                $("#third").toggleClass("fa-angle-up");
-            });
+        const eventsLink = document.getElementById("eventsLink");
+        const liveStreamLink = document.getElementById("liveStreamLink");
 
-            $('#q4').click(function () {
-                $('#a4').slideToggle("slow");
-                $("#fourth").toggleClass("fa-angle-down");
-                $("#fourth").toggleClass("fa-angle-up");
-            });
+        eventsLink.addEventListener("click", requireLogin);
+        liveStreamLink.addEventListener("click", requireLogin);
+      });
+    </script>
 
-            $('#q5').click(function () {
-                $('#a5').slideToggle("slow");
-                $("#fifth").toggleClass("fa-angle-down");
-                $("#fifth").toggleClass("fa-angle-up");
-            });
-
-            $('#q6').click(function () {
-                $('#a6').slideToggle("slow");
-                $("#sixth").toggleClass("fa-angle-down");
-                $("#sixth").toggleClass("fa-angle-up");
-            });
-
-            $('#q7').click(function () {
-                $('#a7').slideToggle("slow");
-                $("#seven").toggleClass("fa-angle-down");
-                $("#seven").toggleClass("fa-angle-up");
-            });
-
-            $('#q8').click(function () {
-                $('#a8').slideToggle("slow");
-                $("#eight").toggleClass("fa-angle-down");
-                $("#eight").toggleClass("fa-angle-up");
-            });
+    <script>
+      $(document).ready(function () {
+        $("#a1").show();
+        $("#a2").hide();
+        $("#a3").hide();
+        $("#a4").hide();
+        $("#a5").hide();
+        $("#a6").hide();
+        $("#a7").hide();
+        $("#a8").hide();
+        $("#q1").click(function () {
+          $("#a1").slideToggle("slow");
+          $("#first").toggleClass("fa-angle-up");
+          $("#first").toggleClass("fa-angle-down");
         });
+
+        $("#q2").click(function () {
+          $("#a2").slideToggle("slow");
+          $("#second").toggleClass("fa-angle-down");
+          $("#second").toggleClass("fa-angle-up");
+        });
+
+        $("#q3").click(function () {
+          $("#a3").slideToggle("slow");
+          $("#third").toggleClass("fa-angle-down");
+          $("#third").toggleClass("fa-angle-up");
+        });
+
+        $("#q4").click(function () {
+          $("#a4").slideToggle("slow");
+          $("#fourth").toggleClass("fa-angle-down");
+          $("#fourth").toggleClass("fa-angle-up");
+        });
+
+        $("#q5").click(function () {
+          $("#a5").slideToggle("slow");
+          $("#fifth").toggleClass("fa-angle-down");
+          $("#fifth").toggleClass("fa-angle-up");
+        });
+
+        $("#q6").click(function () {
+          $("#a6").slideToggle("slow");
+          $("#sixth").toggleClass("fa-angle-down");
+          $("#sixth").toggleClass("fa-angle-up");
+        });
+
+        $("#q7").click(function () {
+          $("#a7").slideToggle("slow");
+          $("#seven").toggleClass("fa-angle-down");
+          $("#seven").toggleClass("fa-angle-up");
+        });
+
+        $("#q8").click(function () {
+          $("#a8").slideToggle("slow");
+          $("#eight").toggleClass("fa-angle-down");
+          $("#eight").toggleClass("fa-angle-up");
+        });
+      });
     </script>
     <script>
-        $(document).ready(function () {
-            jQuery.fn.carousel.Constructor.TRANSITION_DURATION = 10000  // 2 seconds
-        });
+      $(document).ready(function () {
+        jQuery.fn.carousel.Constructor.TRANSITION_DURATION = 10000; // 2 seconds
+      });
     </script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
       AOS.init({
-          offset: 180,
-          duration: 1000
+        offset: 180,
+        duration: 1000,
       });
-  </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-    crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
-    crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
-    integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
-    crossorigin="anonymous"></script>
-</body>
-
+    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+      integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
+      integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>

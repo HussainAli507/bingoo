@@ -6,14 +6,12 @@ const { CloudinaryStorage } = require("multer-storage-cloudinary");
 const multer = require("multer");
 const { v4: uuidv4 } = require("uuid");
 
-// Configure Cloudinary
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
   api_key: process.env.CLOUDINARY_API_KEY,
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-// Configure multer and Cloudinary storage
 const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: {
@@ -26,7 +24,6 @@ const storage = new CloudinaryStorage({
 
 const upload = multer({ storage });
 
-// Create a new event with image URL
 router.post("/create", upload.single("thumbnail"), async (req, res) => {
   const {
     eventName,
@@ -46,7 +43,7 @@ router.post("/create", upload.single("thumbnail"), async (req, res) => {
     details,
     startTime: new Date(`${startDate}T${startTime}`),
     endTime: new Date(`${endDate}T${endTime}`),
-    thumbnail: req.file.path, // Store the Cloudinary URL in the database
+    thumbnail: req.file.path,
   });
 
   try {
@@ -57,7 +54,6 @@ router.post("/create", upload.single("thumbnail"), async (req, res) => {
   }
 });
 
-// Get all events
 router.get("/", async (req, res) => {
   try {
     const events = await Event.find({});
@@ -67,7 +63,6 @@ router.get("/", async (req, res) => {
   }
 });
 
-// Delete an event by ID
 router.delete("/:id", async (req, res) => {
   try {
     const event = await Event.findByIdAndDelete(req.params.id);

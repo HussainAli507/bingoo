@@ -613,7 +613,8 @@
         <div class="d-flex align-items-center">
             <div class="row">
             </div>
-            <button class="upload-btn btn desktop" style="margin-right: 10px;" onclick="showPopup()">BINGO</button>
+            <!-- <button class="upload-btn btn desktop" style="margin-right: 10px;" onclick="showPopup()">BINGO</button> -->
+            <button id="bingoButton" class="upload-btn btn desktop" style="margin-right: 10px;" onclick="checkAndShowWinner()" disabled>BINGO</button>
             <a href="payment.html">
                 <button class="upload-btn btn desktop">BUY MORE CARDS</button>
             </a>
@@ -630,128 +631,144 @@
         </div>
         </div>
 
-       <script>
-        document.addEventListener("DOMContentLoaded", function () {
-    // Get the video element
-    const video = document.getElementById("mainVideo");
-
-    // Get all the bingo number cells
-    const bingoCells = document.querySelectorAll(".bingo-table td");
-
-    // Add event listeners to the video to enable/disable bingo cell click listeners
-    video.addEventListener("play", enableBingoClicks);
-    video.addEventListener("pause", disableBingoClicks);
-    video.addEventListener("ended", disableBingoClicks);
-
-    // Get the play again button and add an event listener
-    const playAgainButton = document.getElementById("playAgainButton");
-    playAgainButton.addEventListener("click", playAgain);
-
-    // Get the close button and add an event listener
-    const closePopupButton = document.getElementById("closePopupButton");
-    closePopupButton.addEventListener("click", closePopup);
-
-    // Function to enable bingo cell click listeners
-    function enableBingoClicks() {
-        bingoCells.forEach((cell) => {
-            cell.addEventListener("click", cellClickListener);
-        });
-    }
-
-    // Function to disable bingo cell click listeners
-    function disableBingoClicks() {
-        bingoCells.forEach((cell) => {
-            cell.removeEventListener("click", cellClickListener);
-        });
-    }
-
-    function cellClickListener(event) {
-        // Toggle the crossed-out class and red background on click
-        this.classList.toggle("crossed-out");
-        this.classList.toggle("red-background");
-
-        // Check for a win condition
-        checkWinCondition();
-    }
-
-    function checkWinCondition() {
-        const bingoTables = document.querySelectorAll(".bingo-table");
-
-        // Check each table
-        bingoTables.forEach((table) => {
-            const rows = table.querySelectorAll("tr");
-            let cols = [[], [], [], [], []];
-
-            // Gather columns data
-            rows.forEach((row, rowIndex) => {
-                if (rowIndex > 0) { // Skip the header row
-                    const cells = row.querySelectorAll("td");
-                    cells.forEach((cell, colIndex) => {
-                        cols[colIndex].push(cell);
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                // Get the video element
+                const video = document.getElementById("mainVideo");
+    
+                // Get all the bingo number cells
+                const bingoCells = document.querySelectorAll(".bingo-table td");
+    
+                // Add event listeners to the video to enable/disable bingo cell click listeners
+                video.addEventListener("play", enableBingoClicks);
+                video.addEventListener("pause", disableBingoClicks);
+                video.addEventListener("ended", disableBingoClicks);
+    
+                // Get the play again button and add an event listener
+                const playAgainButton = document.getElementById("playAgainButton");
+                playAgainButton.addEventListener("click", playAgain);
+    
+                // Get the close button and add an event listener
+                const closePopupButton = document.getElementById("closePopupButton");
+                closePopupButton.addEventListener("click", closePopup);
+    
+                // Get the BINGO button
+                const bingoButton = document.getElementById("bingoButton");
+    
+                // Variable to track win state
+                let hasWon = false;
+    
+                // Function to enable bingo cell click listeners
+                function enableBingoClicks() {
+                    bingoCells.forEach((cell) => {
+                        cell.addEventListener("click", cellClickListener);
                     });
                 }
+    
+                // Function to disable bingo cell click listeners
+                function disableBingoClicks() {
+                    bingoCells.forEach((cell) => {
+                        cell.removeEventListener("click", cellClickListener);
+                    });
+                }
+    
+                function cellClickListener(event) {
+                    // Toggle the crossed-out class and red background on click
+                    this.classList.toggle("crossed-out");
+                    this.classList.toggle("red-background");
+    
+                    // Check for a win condition
+                    if (!hasWon) {
+                        checkWinCondition();
+                    }
+                }
+    
+                function checkWinCondition() {
+                    const bingoTables = document.querySelectorAll(".bingo-table");
+    
+                    // Check each table
+                    bingoTables.forEach((table) => {
+                        const rows = table.querySelectorAll("tr");
+                        let cols = [[], [], [], [], []];
+    
+                        // Gather columns data
+                        rows.forEach((row, rowIndex) => {
+                            if (rowIndex > 0) { // Skip the header row
+                                const cells = row.querySelectorAll("td");
+                                cells.forEach((cell, colIndex) => {
+                                    cols[colIndex].push(cell);
+                                });
+                            }
+                        });
+    
+                        // Check for horizontal, vertical, and diagonal wins
+                        if (checkRows(rows) || checkCols(cols) || checkDiagonals(rows)) {
+                            hasWon = true;
+                            enableBingoButton();
+                        }
+                    });
+                }
+    
+                function checkRows(rows) {
+                    for (let i = 1; i < rows.length; i++) { // Skip the header row
+                        const cells = rows[i].querySelectorAll("td");
+                        if ([...cells].every(cell => cell.classList.contains("crossed-out"))) {
+                            return true;
+                        }
+                    }
+                    return false;
+                }
+    
+                function checkCols(cols) {
+                    for (let i = 0; i < cols.length; i++) {
+                        if (cols[i].every(cell => cell.classList.contains("crossed-out"))) {
+                            return true;
+                        }
+                    }
+                    return false;
+                }
+    
+                function checkDiagonals(rows) {
+                    const leftDiagonal = [rows[1].querySelectorAll("td")[0], rows[2].querySelectorAll("td")[1], rows[3].querySelectorAll("td")[2], rows[4].querySelectorAll("td")[3], rows[5].querySelectorAll("td")[4]];
+                    const rightDiagonal = [rows[1].querySelectorAll("td")[4], rows[2].querySelectorAll("td")[3], rows[3].querySelectorAll("td")[2], rows[4].querySelectorAll("td")[1], rows[5].querySelectorAll("td")[0]];
+    
+                    if (leftDiagonal.every(cell => cell.classList.contains("crossed-out")) || rightDiagonal.every(cell => cell.classList.contains("crossed-out"))) {
+                        return true;
+                    }
+                    return false;
+                }
+    
+                function enableBingoButton() {
+                    bingoButton.disabled = false;
+                }
+    
+                window.checkAndShowWinner = function() {
+                    if (hasWon) {
+                        showPopup();
+                    }
+                }
+    
+                function showPopup() {
+                    const popup = document.getElementById('popup');
+                    popup.style.display = 'block';
+    
+                    const background = document.getElementById('popup-background');
+                    background.style.display = 'block';
+                }
+    
+                function closePopup() {
+                    const popup = document.getElementById('popup');
+                    popup.style.display = 'none';
+    
+                    const background = document.getElementById('popup-background');
+                    background.style.display = 'none';
+                }
+    
+                function playAgain() {
+                    location.reload();
+                }
             });
-
-            // Check for horizontal, vertical, and diagonal wins
-            if (checkRows(rows) || checkCols(cols) || checkDiagonals(rows)) {
-                showPopup();
-                // Disable further clicks
-                disableBingoClicks();
-            }
-        });
-    }
-
-    function checkRows(rows) {
-        for (let i = 1; i < rows.length; i++) { // Skip the header row
-            const cells = rows[i].querySelectorAll("td");
-            if ([...cells].every(cell => cell.classList.contains("crossed-out"))) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    function checkCols(cols) {
-        for (let i = 0; i < cols.length; i++) {
-            if (cols[i].every(cell => cell.classList.contains("crossed-out"))) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    function checkDiagonals(rows) {
-        const leftDiagonal = [rows[1].querySelectorAll("td")[0], rows[2].querySelectorAll("td")[1], rows[3].querySelectorAll("td")[2], rows[4].querySelectorAll("td")[3], rows[5].querySelectorAll("td")[4]];
-        const rightDiagonal = [rows[1].querySelectorAll("td")[4], rows[2].querySelectorAll("td")[3], rows[3].querySelectorAll("td")[2], rows[4].querySelectorAll("td")[1], rows[5].querySelectorAll("td")[0]];
-
-        if (leftDiagonal.every(cell => cell.classList.contains("crossed-out")) || rightDiagonal.every(cell => cell.classList.contains("crossed-out"))) {
-            return true;
-        }
-        return false;
-    }
-
-    function showPopup() {
-        const popup = document.getElementById('popup');
-        popup.style.display = 'block';
-
-        const background = document.getElementById('popup-background');
-        background.style.display = 'block';
-    }
-
-    function closePopup() {
-        const popup = document.getElementById('popup');
-        popup.style.display = 'none';
-
-        const background = document.getElementById('popup-background');
-        background.style.display = 'none';
-    }
-
-    function playAgain() {
-        location.reload();
-    }
-});
-
-       </script>
+        </script>
 
         <div class="col-sm-12 col-md-12 col-lg-12 col-12">
             <div
@@ -900,63 +917,105 @@
         jQuery.fn.carousel.Constructor.TRANSITION_DURATION = 10000; // 2 seconds
         fetchVideos();
     });
-
-    function fetchVideos() {
-        fetch("http://localhost:4000/api/videos")
-            .then((response) => response.json())
-            .then((data) => {
-                const carouselInner = document.getElementById("carouselInner");
-                const carouselInnerMobile = document.getElementById(
-                    "carouselInnerMobile"
-                );
-
-                // Clear existing inner HTML
-                carouselInner.innerHTML = "";
-                carouselInnerMobile.innerHTML = "";
-
-                // Loop through data in groups of three
-                for (let i = 0; i < data.length; i += 3) {
-                    const group = data.slice(i, i + 3); // Get three items
-
-                    const isActive = i === 0 ? "active" : "";
-                    const cardGroup = `
-          <div class="carousel-item ${isActive}">
-            <div class="row">
-              ${group
-                        .map(
-                            (video) => `
-                <div class="col-md-4 col-4 col-sm-4 col-lg-4">
-                  <div class="card" data-video-url="${video.videoUrl}">
-                    <img src="${video.thumbnailUrl}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title" style="font-size:24px;">Game1</h5>
-                    </div>
-                  </div>
-                </div>
-              `
-                        )
-                        .join("")}
-            </div>
-          </div>
-        `;
-                    carouselInner.innerHTML += cardGroup;
-                    carouselInnerMobile.innerHTML += cardGroup;
+    
+    async function fetchVideos() {
+        const token = localStorage.getItem("token");
+        console.log("Token retrieved from localStorage:", token);
+    
+        if (!token) {
+            alert("You are not logged in to view this content. Please login.");
+            window.location.href = "./login.html";
+            return;
+        }
+    
+        try {
+            const response = await fetch("http://localhost:4000/api/videos", {
+                method: "GET",
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "application/json",
+                },
+            });
+    
+            console.log("Response status:", response.status);
+    
+            if (!response.ok) {
+                if (response.status === 401) {
+                    console.error("Unauthorized");
+                    alert("You are not authorized to view this content. Please login.");
+                    window.location.href = "./login.html";
+                } else if (response.status === 403) {
+                    console.error("Forbidden");
+                    alert("You do not have permission to view this content.");
+                } else {
+                    console.error("Failed to fetch events:", response.statusText);
+                    alert("Failed to fetch events. Please try again later.");
                 }
-
-                // Add event listeners to cards
-                document.querySelectorAll(".card").forEach((card) => {
-                    card.addEventListener("click", (e) => {
-                        const videoUrl = card.getAttribute("data-video-url");
-                        const mainVideo = document.getElementById("mainVideo");
-                        mainVideo.querySelector("source").setAttribute("src", videoUrl);
-                        mainVideo.load();
-                        mainVideo.play();
-                    });
+                return;
+            }
+    
+            const contentType = response.headers.get("content-type");
+            let events;
+            if (contentType && contentType.indexOf("application/json") !== -1) {
+                events = await response.json();
+            } else {
+                console.error("Expected JSON response, but got:", await response.text());
+                alert("Failed to fetch events. Unexpected response format.");
+                return;
+            }
+    
+            console.log("Events data:", events);
+    
+            const carouselInner = document.getElementById("carouselInner");
+            const carouselInnerMobile = document.getElementById("carouselInnerMobile");
+    
+            // Clear existing inner HTML
+            carouselInner.innerHTML = "";
+            carouselInnerMobile.innerHTML = "";
+    
+            for (let i = 0; i < events.length; i += 3) {
+                const group = events.slice(i, i + 3);
+    
+                const isActive = i === 0 ? "active" : "";
+                const cardGroup = `
+                    <div class="carousel-item ${isActive}">
+                        <div class="row">
+                            ${group.map((event) => `
+                            <div class="col-md-4 col-4 col-sm-4 col-lg-4">
+                                <div class="card" data-video-url="${event.videoUrl}">
+                                    <img src="${event.thumbnailUrl}" class="card-img-top" alt="Event Thumbnail">
+                                    <div class="card-body">
+                                        <h5 class="card-title" style="font-size:24px;">${event.eventName}</h5>
+                                        <p class="card-p">${event.details}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            `).join("")}
+                        </div>
+                    </div>`;
+                carouselInner.innerHTML += cardGroup;
+                carouselInnerMobile.innerHTML += cardGroup;
+            }
+    
+            // Add event listeners to cards
+            document.querySelectorAll(".card").forEach((card) => {
+                card.addEventListener("click", (e) => {
+                    const videoUrl = card.getAttribute("data-video-url");
+                    const mainVideo = document.getElementById("mainVideo");
+                    mainVideo.querySelector("source").setAttribute("src", videoUrl);
+                    mainVideo.load();
+                    mainVideo.play();
                 });
-            })
-            .catch((error) => console.error("Error fetching videos:", error));
+            });
+        } catch (error) {
+            console.error("Error fetching live streaming events:", error);
+            alert("An error occurred while fetching the events. Please try again later.");
+        }
     }
-</script>
+    </script>
+    
+
+  
 
 <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"

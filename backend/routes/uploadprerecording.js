@@ -25,7 +25,6 @@ const storage = new CloudinaryStorage({
 
 const upload = multer({ storage });
 
-// POST route for uploading thumbnail and video
 router.post(
   "/upload",
   upload.fields([
@@ -38,7 +37,6 @@ router.post(
       const thumbnailUrl = req.files["thumbnail"][0].path;
       const videoUrl = req.files["video"][0].path;
 
-      // Save video details to the database
       const newVideo = new Video({ prize, colorCode, thumbnailUrl, videoUrl });
       await newVideo.save();
 
@@ -50,7 +48,6 @@ router.post(
   }
 );
 
-// GET route for fetching uploaded videos
 router.get("/videos", async (req, res) => {
   try {
     const videos = await Video.find();
